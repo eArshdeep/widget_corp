@@ -1,6 +1,7 @@
 <!-- Import database connection and universal functions -->
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
+<?php include '../includes/find_current_menu.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -25,30 +26,19 @@
       <!-- MAIN SECTION -->
       <section class="col s12 m10">
         <div class="container">
-          <h2>
-            <!-- Output "Edit Page" or "Edit Subject" -->
-            <?php
-              if(isset($selected_subject_id)){echo "Edit Subject"; }
-              elseif(isset($selected_page_id)){echo "Edit Page"; }
-              else{echo "Please select a page or subject to edit";}
-            ?>
-          </h2>
-
-          <!-- If Subject is set, prepare manage section -->
           <?php
-            if(isset($selected_subject_id)){
-              $subject = find_subject_by_id($selected_subject_id);
+            if(isset($current_subject)){
+              echo "<h2>Edit Subject</h1>";
               echo "<p class='menu_name'>Menu Name: </p>";
-              echo $subject["menu_name"];
+              echo $current_subject["menu_name"];
             }
-          ?>
-
-          <!-- If Page is set, prepare manage section  -->
-          <?php
-            if(isset($selected_page_id)){
-              $page = find_page_by_id($selected_page_id);
+            elseif (isset($current_page)){
+              echo "<h2>Edit Page</h1>";
               echo "<p class='menu_name'>Page Name: </p>";
-              echo $page["menu_name"];
+              echo $current_page["menu_name"];
+            }
+            else {
+              echo "<p>Please select a page or subject to modify.</p>";
             }
           ?>
         </div>
