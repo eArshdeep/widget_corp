@@ -1,7 +1,9 @@
+<?php require_once '../includes/db_connection.php'; ?>
+<?php require_once '../includes/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Administrators</title>
+  <title>Widget Corp</title>
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
@@ -9,25 +11,17 @@
 
   <main>
     <div class="row">
-      <!-- NAV SECTION -->
-      <section class="col s12 m2">
-
-      </section>
+        <!-- NAV SECTION -->
+        <section class="col s12 m2">
+          <?php include '../includes/layout/nav.php'; ?>
+        </section>
 
       <!-- MAIN SECTION -->
       <section class="col s12 m10">
         <div class="container">
-          <h2>Administrator Menu</h2>
-          <p>Welcome to the administrator area.</p>
-
-          <ul>
-            <li><a href="manage_content.php">Manage Website Content</a></li>
-            <li><a href="manage_admins.php">Manage Administrators</a></li>
-            <li><a href="logout.php">Logout</a></li>
-          </ul>
+          <h2>Create New Subject</h2>
         </div>
       </section>
-
     </div>
   </main>
 

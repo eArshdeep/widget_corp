@@ -45,3 +45,7 @@ footer {
   display: inline;
   font-weight: bold;
 }
+
+.test {
+  display: block;
+}

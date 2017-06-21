@@ -1,5 +1,11 @@
-<section class="col s12 m4">
-  <ul class="subjects">
+<?php /*
+  This module expects that whereever this module is used, that 'functions.php' and 'db_connection.php' are also included
+*/ ?>
+
+<?php include '../includes/find_current_menu.php'; ?>
+<?php $subject_set = find_all_subjects(); ?>
+
+<ul class="subjects">
 
     <?php while ($subject = mysqli_fetch_assoc($subject_set)) { ?>
 
@@ -21,4 +27,3 @@
     <?php } // close subject_set while loop ?>
 
   </ul>
-</section>

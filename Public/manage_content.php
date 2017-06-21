@@ -2,21 +2,6 @@
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
-<?php ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL); ?>
-
-<?php
-  // gets and sets values for what subject or page to edit in edit section
-  $selected_subject_id = null;
-  $selected_page_id = null;
-  if(isset($_GET["subject"])){
-    $selected_subject_id = $_GET["subject"];
-  } elseif (isset($_GET["page"])) {
-    $selected_page_id = $_GET["page"];
-  }
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,23 +11,22 @@ error_reporting(E_ALL); ?>
 </head>
 <body>
 
-  <?php
-    // Make db call to get all visbile subjects
-    $subject_set = find_all_subjects();
-  ?>
-
   <!-- Import header and top nav -->
   <?php include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="row">
-      <!-- NAV SECTION -->
-      <?php include '../includes/layout/nav.php'; ?>
+        <!-- NAV SECTION -->
+        <section class="col s12 m2">
+          <?php include '../includes/layout/nav.php'; ?>
+          <a href="new_subject.php">+ Add a new Subject</a>
+        </section>
 
       <!-- MAIN SECTION -->
-      <section class="col s12 m8">
+      <section class="col s12 m10">
         <div class="container">
           <h2>
+            <!-- Output "Edit Page" or "Edit Subject" -->
             <?php
               if(isset($selected_subject_id)){echo "Edit Subject"; }
               elseif(isset($selected_page_id)){echo "Edit Page"; }
@@ -50,6 +34,7 @@ error_reporting(E_ALL); ?>
             ?>
           </h2>
 
+          <!-- If Subject is set, prepare manage section -->
           <?php
             if(isset($selected_subject_id)){
               $subject = find_subject_by_id($selected_subject_id);
@@ -58,6 +43,7 @@ error_reporting(E_ALL); ?>
             }
           ?>
 
+          <!-- If Page is set, prepare manage section  -->
           <?php
             if(isset($selected_page_id)){
               $page = find_page_by_id($selected_page_id);
