@@ -2,12 +2,27 @@
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
+<?php ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL); ?>
+
+<?php
+  // gets and sets values for what subject or page to edit in edit section
+  $selected_subject_id = null;
+  $selected_page_id = null;
+  if(isset($_GET["subject"])){
+    $selected_subject_id = $_GET["subject"];
+  } elseif (isset($_GET["page"])) {
+    $selected_page_id = $_GET["page"];
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Manage</title>
   <!-- Import meta for head -->
-  <?php include '../includes/layout/meata_head.php'; ?>
+  <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
 
@@ -22,35 +37,34 @@
   <main>
     <div class="row">
       <!-- NAV SECTION -->
-      <section class="col s12 m4">
-        <ul class="subjects">
-
-          <?php while ($subject = mysqli_fetch_assoc($subject_set)) { ?>
-
-            <?php /*grab all pages for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
-
-            <li>
-              <a href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>">
-              <?php echo $subject["menu_name"]; ?></a>
-
-              <ul class="pages">
-                <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
-
-                  <li><a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>"><?php echo $page["menu_name"]; ?></a></li>
-
-                <?php } // close page_set while loop ?>
-              </ul>
-            </li>
-
-          <?php } // close subject_set while loop ?>
-
-        </ul>
-      </section>
+      <?php include '../includes/layout/nav.php'; ?>
 
       <!-- MAIN SECTION -->
       <section class="col s12 m8">
         <div class="container">
-          <h2>Manage Content</h2>
+          <h2>
+            <?php
+              if(isset($selected_subject_id)){echo "Edit Subject"; }
+              elseif(isset($selected_page_id)){echo "Edit Page"; }
+              else{echo "Please select a page or subject to edit";}
+            ?>
+          </h2>
+
+          <?php
+            if(isset($selected_subject_id)){
+              $subject = find_subject_by_id($selected_subject_id);
+              echo "<p class='menu_name'>Menu Name: </p>";
+              echo $subject["menu_name"];
+            }
+          ?>
+
+          <?php
+            if(isset($selected_page_id)){
+              $page = find_page_by_id($selected_page_id);
+              echo "<p class='menu_name'>Page Name: </p>";
+              echo $page["menu_name"];
+            }
+          ?>
         </div>
       </section>
     </div>

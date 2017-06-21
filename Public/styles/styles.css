@@ -16,15 +16,32 @@ h2 {
   font-size: 28px;
 }
 
-.subjects {
-  margin-top: 35px;
+li {
+  display: list-item;
+  margin-left: 20px;
 }
 
-li {
-display: list-item;
-margin-left: 1em;
+a {
+  color: rgb(47, 39, 47);
 }
 
 .pages li {
   list-style-type: square !important;
+}
+
+ul.pages {
+  font-weight: normal;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+footer {
+  color: grey;
+}
+
+.menu_name {
+  display: inline;
+  font-weight: bold;
 }
