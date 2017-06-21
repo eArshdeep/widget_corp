@@ -11,14 +11,14 @@
 
       <?php /*grab all pages for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
 
-      <li <?php if($subject["id"]===$selected_subject_id){echo "class='selected'";} ?>>
+      <li <?php if($subject["id"]===$current_subject["id"]){echo "class='selected'";} ?>>
         <a href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>">
         <?php echo $subject["menu_name"]; ?></a>
 
         <ul class="pages">
           <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
 
-            <li <?php if($page["id"]===$selected_page_id){echo "class='selected'";} ?>><a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>"><?php echo $page["menu_name"]; ?></a></li>
+            <li <?php if($page["id"]===$current_page["id"]){echo "class='selected'";} ?>><a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>"><?php echo $page["menu_name"]; ?></a></li>
 
           <?php } // close page_set while loop ?>
         </ul>
