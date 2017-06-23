@@ -1,5 +1,10 @@
 <?php
 
+  function redirect_to($new_location){
+    header("Location: " . $new_location);
+    exit;
+  }
+
   function confirm_query($result){
     if(!$result){
       die("Atempt to make database query has failed.");

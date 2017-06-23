@@ -47,7 +47,7 @@
               <input name="visible" type="radio" id="visible_hidden" value="0"/>
               <label for="visible_hidden">Hidden</label>
             <!-- Submit Button -->
-            <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit">Submit</button>
+            <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Submit</button>
           </form>
           <a href="manage_content.php" class="orange-text">&#8592; Cancel</a>
         </div>
@@ -61,5 +61,11 @@
       $('select').material_select();
     });
   </script>
+
+  <?php
+    // release db resources and handles
+    mysqli_close($db);
+    mysqli_free_result($subject_set);
+  ?>
 </body>
 </html>
