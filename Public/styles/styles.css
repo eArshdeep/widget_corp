@@ -12,6 +12,15 @@ main {
   margin: 0;
 }
 
+.margin-adder{
+  margin-top: 25px;
+}
+
+.side-margin-adder{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
 h2 {
   font-size: 28px;
 }
@@ -46,6 +55,6 @@ footer {
   font-weight: bold;
 }
 
-.test {
-  display: block;
+form {
+  margin-bottom: 25px;
 }
