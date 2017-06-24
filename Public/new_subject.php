@@ -7,7 +7,7 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php include '../includes/layout/header.php'; ?>
+  <?php generate_header(); ?>
 
   <main>
     <div class="row">

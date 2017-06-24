@@ -1,3 +1,4 @@
+<?php require_once '../includes/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php include '../includes/layout/header.php'; ?>
+  <?php generate_header(); ?>
 
   <main>
     <div class="row">

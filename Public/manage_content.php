@@ -13,7 +13,7 @@
 <body>
 
   <!-- Import header and top nav -->
-  <?php include '../includes/layout/header.php'; ?>
+  <?php generate_header(); ?>
 
   <main>
     <div class="row">

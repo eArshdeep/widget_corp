@@ -1,3 +1,4 @@
+<?php require_once '../includes/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,12 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php include '../includes/layout/header.php'; ?>
+  <?php generate_header($display_admin_link = true); //include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="container">
-      <h2 class="center-algin">Admin?</h2>
-      <p><a href="admin.php">Follow me.</a></p>
+      <h2 class="center">Welcome</h2>
+      <h2 class="center"># Site under construction!</h2>
     </div>
   </main>
 

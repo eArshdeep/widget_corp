@@ -51,4 +51,18 @@
     } else {return null;}
   }
 
+  function generate_header($display_admin_link=false){
+    $output = '<nav>';
+    $output .= '<div class="nav-wrapper orange">';
+       $output .= '<h1 class="margin-remover">';
+         $output .= '<a href="admin.php" class="brand-logo center">Widget Corporation</a>';
+       $output .= '</h1>';
+       if($display_admin_link===true){
+         $output .= '<a href="admin.php" class="right margin-right-adder">Administrator Area</a>';
+       }
+     $output .= '</div>';
+    $output .= '</nav>';
+    echo $output;
+  }
+
 ?>
