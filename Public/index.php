@@ -6,12 +6,23 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header($display_admin_link = true); //include '../includes/layout/header.php'; ?>
+  <?php generate_header($display_admin_link = true); ?>
 
   <main>
     <div class="container">
-      <h2 class="center">Welcome</h2>
-      <h2 class="center"># Site under construction!</h2>
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card">
+            <div class="card-image">
+              <img src="./images/under_construction.jpg">
+            </div>
+            <div class="card-content">
+              <h2>Site Under Construction!</h2>
+              <p>The talented engineers over at Widget Corp are still happily designing me! Be up for business in a few!</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 

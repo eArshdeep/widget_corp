@@ -55,7 +55,7 @@
     $output = '<nav>';
     $output .= '<div class="nav-wrapper orange">';
        $output .= '<h1 class="margin-remover">';
-         $output .= '<a href="admin.php" class="brand-logo center">Widget Corporation</a>';
+         $output .= '<a href="index.php" class="brand-logo center">Widget Corporation</a>';
        $output .= '</h1>';
        if($display_admin_link===true){
          // hamburger icon
