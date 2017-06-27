@@ -58,7 +58,16 @@
          $output .= '<a href="admin.php" class="brand-logo center">Widget Corporation</a>';
        $output .= '</h1>';
        if($display_admin_link===true){
-         $output .= '<a href="admin.php" class="right margin-right-adder">Administrator Area</a>';
+         // hamburger icon
+         $output .= '<a href="#" data-activates="admin_nav" class="button-collapse"><i class="material-icons">menu</i></a>';
+         // nav
+         $output .= '<ul class="left hide-on-med-and-down">';
+           $output .= '<a href="admin.php">Administrator Area</a>';
+         $output .= '</ul>';
+         // mobile nav
+         $output .= '<ul class="side-nav" id="admin_nav">';
+          $output .= '<li><a href="admin.php">Administrator Area</a>';
+         $output .= '</ul>';
        }
      $output .= '</div>';
     $output .= '</nav>';

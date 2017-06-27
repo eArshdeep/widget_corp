@@ -16,5 +16,10 @@
   </main>
 
   <?php include '../includes/layout/footer.php'; include '../includes/layout/meta_body.php';?>
+  <script type="text/javascript">
+    $( document ).ready(function(){
+       $(".button-collapse").sideNav();
+    })
+  </script>
 </body>
 </html>
