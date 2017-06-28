@@ -18,7 +18,7 @@
         <ul class="pages">
           <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
 
-            <li <?php if($page["id"]===$current_page["id"]){echo "class='selected'";} ?>><a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>"><?php echo $page["menu_name"]; ?></a></li>
+            <li class="make_list <?php if($page["id"]===$current_page["id"]){echo "selected";} ?>"><a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>"><?php echo $page["menu_name"]; ?></a></li>
 
           <?php } // close page_set while loop ?>
         </ul>

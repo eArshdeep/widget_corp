@@ -74,4 +74,19 @@
     echo $output;
   }
 
+  function echo_errors($errors=array()){
+    $output = null;
+
+    if(!empty($errors)){
+      $output = "<p class='margin-adder'>Please fix the following:</p>";
+      $output .= "<ul>";
+      foreach ($errors as $field => $error) {
+        $output .= "<li class='make_list'>{$error}</li>";
+      }
+      $output .= "</ul>";
+    }
+
+    echo $output;
+  }
+
 ?>

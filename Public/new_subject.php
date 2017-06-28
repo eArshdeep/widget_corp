@@ -49,9 +49,16 @@
               <input name="visible" type="radio" id="visible_hidden" value="0"/>
               <label for="visible_hidden">Hidden</label>
             <!-- Submit Button -->
-            <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Submit</button>
+            <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Create</button>
           </form>
           <a href="manage_content.php" class="orange-text">&#8592; Cancel</a>
+
+          <section>
+            <?php
+              $errors = grab_errors();
+              echo_errors($errors);
+            ?>
+          </section>
         </div>
       </section>
     </div>

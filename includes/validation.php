@@ -13,6 +13,7 @@
   }
 
   function validate_presences($required_fields){
+    // expects a numericaly indexed array with fields names that match what is expected from POST superglobal
     global $errors;
     foreach ($required_fields as $field) {
       $value = trim($_POST[$field]);
@@ -29,6 +30,7 @@
 
   function validate_max_lengths($field_length_array){
     // expects assoc array -> [field: max length allowed]
+    // note field must correspond to the name expected of the values found in the $_POST superglobal
     global $errors;
     foreach ($field_length_array as $field => $max) {
       $value = trim($_POST[$field]);
@@ -40,21 +42,6 @@
 
   function included_in($value, $set){
     return in_array($value, $set);
-  }
-
-  function form_errors($errors=array()){
-    $output = null;
-
-    if(!empty($errors)){
-      $output = "Please fix the following:";
-      $output .= "<ul>";
-      foreach ($errors as $field => $error) {
-        $output .= "<li>{$error}</li>";
-      }
-      $output .= "</li>";
-    }
-
-    echo $output;
   }
 
 ?>
