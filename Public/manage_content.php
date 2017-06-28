@@ -1,4 +1,4 @@
-<!-- Import database connection and universal functions -->
+<?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 <?php include '../includes/find_current_menu.php'; ?>
@@ -56,6 +56,12 @@
   <!-- Import footer and meta -->
   <?php include '../includes/layout/footer.php'; ?>
   <?php include '../includes/layout/meta_body.php'; ?>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      <?php toast_message(); ?>
+    });
+  </script>
 
 </body>
 </html>

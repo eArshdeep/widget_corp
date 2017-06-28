@@ -1,3 +1,4 @@
+<?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 <!DOCTYPE html>
@@ -19,6 +20,7 @@
       <!-- MAIN SECTION -->
       <section class="col s12 m10">
         <div class="container">
+          <div class="divider"></div>
           <h2>Create New Subject</h2>
           <form action="create_subject.php" method="post">
             <!-- Input: menu name -->
@@ -58,7 +60,9 @@
   <?php include '../includes/layout/footer.php'; include '../includes/layout/meta_body.php';?>
   <script type="text/javascript">
     $(document).ready(function() {
+      // initialize html select forms
       $('select').material_select();
+      <?php toast_message(); ?>
     });
   </script>
 
