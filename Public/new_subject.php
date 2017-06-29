@@ -25,18 +25,28 @@
           <form action="create_subject.php" method="post">
             <!-- Input: menu name -->
             <div class="input-field">
-              <input placeholder="Menu name" id="menu_name" name="menu_name" type="text">
+              <input placeholder="Menu name" id="menu_name" name="menu_name" type="text" <?php repopulate_name("repop_menu_name"); ?>>
               <label for="menu_name">Menu Name</label>
             </div>
             <!-- Input: Position -->
             <div class="input-field">
               <select name="position">
-                <option value="" disabled selected>Select Position</option>
+                <option value="" disabled <?php if(!isset($_SESSION["repop_position"])){echo "selected"; $_SESSION["repop_position"]=null;} ?> >Select Position</option>
                   <?php
                   $subject_set = find_all_subjects();
                   $subject_count = mysqli_num_rows($subject_set);
-                  for($count=1; $count <=$subject_count+1; $count++)
-                    echo "<option value=\"{$count}\">{$count}</option>";
+                  for($count=1; $count <=$subject_count+1; $count++){
+                    $output = "<option ";
+                    if(isset($_SESSION["repop_position"]) && $_SESSION["repop_position"] === $count){
+                      $output .= "selected ";
+                      $_SESSION["repop_position"] = null;
+                    }
+                    $output .= "value=\"{$count}\">";
+                    $output .= $count;
+                    $output .= "</option>";
+                    echo $output;
+                    unset($output);
+                  }
                   ?>
               </select>
               <label>Position</label>

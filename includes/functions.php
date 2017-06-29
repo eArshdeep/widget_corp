@@ -89,4 +89,11 @@
     echo $output;
   }
 
+  function repopulate_name($name){
+    if( isset($_SESSION[$name]) ) {
+      echo "value='{$_SESSION[$name]}'";
+      $_SESSION[$name] = null;
+    }
+  }
+
 ?>

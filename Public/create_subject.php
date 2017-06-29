@@ -21,7 +21,19 @@
     validate_max_lengths($fields_with_length_limit);
 
     if(!empty($errors)){
+      // put form validation errors in session
       $_SESSION["errors"] = $errors;
+
+      // put values entered by user into session to repopulate form
+      if(has_presence($menu_name)){
+        $_SESSION["repop_menu_name"] = $menu_name;
+      }
+
+      if(has_presence($position) && $position !== 0){
+        $_SESSION["repop_position"] = $position;
+      }
+
+      // redirect user to new subject form
       redirect_to("new_subject.php");
     }
 
