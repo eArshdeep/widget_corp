@@ -33,6 +33,10 @@
         $_SESSION["repop_position"] = $position;
       }
 
+      if(has_presence($visible)){
+        $_SESSION["repop_visible"] = $visible;
+      }
+
       // redirect user to new subject form
       redirect_to("new_subject.php");
     }

@@ -96,4 +96,11 @@
     }
   }
 
+  function repopulate_visibility($current_value){
+    if( isset($_SESSION["repop_visible"]) && $_SESSION["repop_visible"] === $current_value) {
+      echo "checked";
+      $_SESSION["repop_visible"] = null;
+    }
+  }
+
 ?>
