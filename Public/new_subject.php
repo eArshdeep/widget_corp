@@ -8,7 +8,10 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header(); ?>
+  <?php
+    generate_header();
+    $errors = grab_errors();
+  ?>
 
   <main>
     <div class="row">
@@ -26,7 +29,7 @@
             <!-- Input: menu name -->
             <div class="input-field">
               <input placeholder="Menu name" id="menu_name" name="menu_name" type="text" <?php repopulate_name("repop_menu_name"); ?>>
-              <label for="menu_name">Menu Name</label>
+              <label for="menu_name" <?php if(isset($errors["menu_name"])){echo "class='red-text'";} ?>>Menu Name</label>
             </div>
             <!-- Input: Position -->
             <div class="input-field">
@@ -65,7 +68,6 @@
 
           <section>
             <?php
-              $errors = grab_errors();
               echo_errors($errors);
             ?>
           </section>
