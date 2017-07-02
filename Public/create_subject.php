@@ -8,7 +8,9 @@
     // handle values
     $menu_name = $_POST["menu_name"];
     $position = (int) $_POST["position"];
-    $visible = (int) $_POST["visible"];
+    if(isset($_POST["visible"])){
+      $visible = (int) $_POST["visible"];
+    }
 
     // escape
     $menu_name = mysqli_real_escape_string($db, $menu_name);
@@ -34,11 +36,7 @@
       }
 
       if(has_presence($visible)){
-        if($visible===1){
-          $_SESSION["repop_visible"] = "visible";
-        } elseif ($visible===0){
-          $_SESSION["repop_visible"] = "hidden";
-        }
+          $_SESSION["repop_visible"] = $visible;
       }
 
       // redirect user to new subject form
