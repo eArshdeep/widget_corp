@@ -84,12 +84,13 @@
     </div>
   </main>
 
-  <?php include '../includes/layout/footer.php'; include '../includes/layout/meta_body.php';?>
+  <?php include '../includes/layout/footer.php'; ?>
+	<?php include '../includes/layout/meta_body.php'; ?>
   <script type="text/javascript">
- 	$(document).ready(function() {
-    	$('select').material_select();
-  	});  
-</script>
+	 	$(document).ready(function() {
+	    	$('select').material_select();
+	  });
+	</script>
 
 </body>
 </html>
