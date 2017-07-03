@@ -52,15 +52,16 @@
                   }
                   ?>
               </select>
-              <label>Position</label>
+              <label <?php if(isset($errors["position"])){echo "class='red-text'";} ?>>Position</label>
             </div>
             <!-- Input: Visibility -->
-            <p>Visibility</p>
+            <p <?php if(isset($errors["visible"])){echo "class='red-text'";} ?>>Visibility</p>
               <input name="visible" type="radio" id="visible_true" value="1" <?php repopulate_visibility(1); ?> />
               <label for="visible_true">Visible</label>
               <span class="side-margin-adder">or</span>
               <input name="visible" type="radio" id="visible_hidden" value="0"<?php repopulate_visibility(0); ?> />
               <label for="visible_hidden">Hidden</label>
+
             <!-- Submit Button -->
             <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Create</button>
           </form>

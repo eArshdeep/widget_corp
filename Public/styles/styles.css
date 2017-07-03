@@ -25,6 +25,10 @@ h2 {
   font-size: 28px;
 }
 
+.normal {
+  font-weight: 300;
+}
+
 li {
   display: list-item;
   margin-left: 20px;
@@ -53,6 +57,18 @@ footer {
 .menu_name {
   display: inline;
   font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display:block;
 }
 
 form {
