@@ -68,9 +68,7 @@
           <a href="manage_content.php" class="orange-text">&#8592; Cancel</a>
 
           <section>
-            <?php
-              echo_errors($errors);
-            ?>
+            <?php echo_errors($errors); ?>
           </section>
         </div>
       </section>

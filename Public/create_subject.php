@@ -62,6 +62,7 @@
     redirect_to("index.php");
   }
 ?>
+
 <?php
   if(isset($db)){mysqli_close($db);}
   if(isset($result)){mysqli_free_result($result);}

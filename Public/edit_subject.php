@@ -1,6 +1,7 @@
 <?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 <?php require_once '../includes/db_connection.php'; ?>
+<?php require_once '../includes/validation.php'; ?>
 
 <?php
 	include '../includes/find_current_menu.php';
@@ -9,6 +10,44 @@
 	if(!isset($current_subject)){
 		redirect_to("manage_content.php");
 	}
+?>
+
+<?php
+  if(isset($_POST["submit"])){
+
+    // validate form values
+    $required_fields = array("menu_name", "position", "visible");
+    validate_presences($required_fields);
+
+    $fields_with_length_limit = array("menu_name" => 30);
+    validate_max_lengths($fields_with_length_limit);
+
+    if(empty($errors)){
+      // If no validation errors... Perform Update
+
+			// handle values
+			$id = (int) $current_subject["id"];
+			$menu_name = $_POST["menu_name"];
+			$position = (int) $_POST["position"];
+			$visible = (int) $_POST["visible"];
+
+			// escape
+	    $menu_name = mysqli_real_escape_string($db, $menu_name);
+
+			// build query
+			$query = "UPDATE subjects SET menu_name = '{$menu_name}', position = {$position}, visible = {$visible} WHERE id = {$id} LIMIT 1;";
+			$result = mysqli_query($db, $query);
+
+			if($result && mysqli_affected_rows($db) == 1){
+				// if update is successful
+				$_SESSION["message"] = "Subject updated successfully. Cheers :)";
+				redirect_to("manage_content.php?subject={$id}");
+			} else {
+				// if update is NOT successful
+				$_SESSION["message"] = "Unable to update subject correctly. Bonkers!";
+			}
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +72,7 @@
         	<!-- Menu name -->
         	<h2> Edit Subject: <span class="normal"><?php echo $current_subject["menu_name"]; ?></span> </h2>
         	<!-- Form -->
-        	<form action="edit_subject.php" method="post">
+        	<form action="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" method="post">
         		<!-- Input: Menu name -->
         		<div class="input-field">
               		<input placeholder="Menu name" id="menu_name" name="menu_name" type="text" value="<?php echo $current_subject["menu_name"]; ?>">
@@ -79,8 +118,13 @@
         	<!-- Cancel button -->
         	<a href="manage_content.php?subject=<?php echo $current_subject["id"]; ?>" class="orange-text">&#8592; Cancel</a>
 
+					<section>
+						<?php echo_errors($errors); ?>
+					</section>
+
         </div>
       </section>
+
     </div>
   </main>
 
@@ -89,6 +133,7 @@
   <script type="text/javascript">
 	 	$(document).ready(function() {
 	    	$('select').material_select();
+				<?php toast_message(); ?>
 	  });
 	</script>
 
