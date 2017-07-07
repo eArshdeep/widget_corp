@@ -40,7 +40,13 @@
 				// if update is successful
 				$_SESSION["message"] = "Subject updated successfully. Cheers :)";
 				redirect_to("manage_content.php?subject={$id}");
-				} else {
+				}
+			elseif($result && mysqli_affected_rows($db) == 0){
+				// query was successful but no rows affected
+				$_SESSION["message"] = "No changes were made, values were found to be identical =)";
+				redirect_to("manage_content.php?subject={$id}");
+				}
+			else {
 				// if update is NOT successful
 				$_SESSION["message"] = "Unable to update subject correctly. Bonkers!";
 				}
@@ -103,12 +109,20 @@
 	            </div>
 
 	            <!-- Input: Visibility -->
-           		 <p>Visibility</p>
-              	<input name="visible" type="radio" id="visible_true" value="1" <?php if(isset($visible) && $visible == 1){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==1){echo "checked";} ?> />
-              	<label for="visible_true">Visible</label>
-              	<span class="side-margin-adder">or</span>
-             	<input name="visible" type="radio" id="visible_hidden" value="0" <?php if(isset($visible) && $visible == 0){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==0){echo "checked";} ?> />
-              	<label for="visible_hidden">Hidden</label>
+							<!-- Title -->
+           		<p>Visibility</p>
+							<!-- Radio -->
+							<input name="visible" type="radio" id="visible_true" value="1"
+								<?php if(isset($visible) && $visible == 1){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==1){echo "checked";} ?> />
+							<!-- Label -->
+							<label for="visible_true">Visible</label>
+							<!-- Span -->
+							<span class="side-margin-adder">or</span>
+							<!-- Radio -->
+							<input name="visible" type="radio" id="visible_hidden" value="0"
+								<?php if(isset($visible) && $visible == 0){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==0){echo "checked";} ?> />
+							<!-- Label -->
+							<label for="visible_hidden">Hidden</label>
 
             	<!-- Submit Button -->
             	<button class="block btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Submit</button>
