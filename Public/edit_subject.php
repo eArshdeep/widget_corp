@@ -15,6 +15,15 @@
 <?php
   if(isset($_POST["submit"])){
 
+		// handle values
+		$id = (int) $current_subject["id"];
+		$menu_name = $_POST["menu_name"];
+		$position = (int) $_POST["position"];
+		$visible = (int) $_POST["visible"];
+
+		// escape
+		$menu_name = mysqli_real_escape_string($db, $menu_name);
+
     // validate form values
     $required_fields = array("menu_name", "position", "visible");
     validate_presences($required_fields);
@@ -23,18 +32,7 @@
     validate_max_lengths($fields_with_length_limit);
 
     if(empty($errors)){
-      // If no validation errors... Perform Update
-
-			// handle values
-			$id = (int) $current_subject["id"];
-			$menu_name = $_POST["menu_name"];
-			$position = (int) $_POST["position"];
-			$visible = (int) $_POST["visible"];
-
-			// escape
-	    $menu_name = mysqli_real_escape_string($db, $menu_name);
-
-			// build query
+	    // If no validation errors... Perform Update
 			$query = "UPDATE subjects SET menu_name = '{$menu_name}', position = {$position}, visible = {$visible} WHERE id = {$id} LIMIT 1;";
 			$result = mysqli_query($db, $query);
 
@@ -42,11 +40,11 @@
 				// if update is successful
 				$_SESSION["message"] = "Subject updated successfully. Cheers :)";
 				redirect_to("manage_content.php?subject={$id}");
-			} else {
+				} else {
 				// if update is NOT successful
 				$_SESSION["message"] = "Unable to update subject correctly. Bonkers!";
+				}
 			}
-    }
   }
 ?>
 
@@ -75,8 +73,8 @@
         	<form action="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" method="post">
         		<!-- Input: Menu name -->
         		<div class="input-field">
-              		<input placeholder="Menu name" id="menu_name" name="menu_name" type="text" value="<?php echo $current_subject["menu_name"]; ?>">
-              		<label for="menu_name">Menu Name</label>
+              		<input placeholder="Menu name" id="menu_name" name="menu_name" type="text" value="<?php if(isset($menu_name)){echo $menu_name;} else {echo $current_subject["menu_name"];} ?>">
+              		<label for="menu_name" <?php if(isset($errors["menu_name"])){echo "class='red-text'";} ?> >Menu Name</label>
             	</div>
 
             	<!-- Input: Position -->
@@ -88,9 +86,11 @@
 		                  $subject_count = mysqli_num_rows($subject_set);
 		                  for($count=1; $count <= $subject_count; $count++){
 		                    $output = "<option ";
-		                    if($current_subject["position"]==$count){
-		                    	$output .= "selected ";
-		                    }
+												if (isset($position) && $position == $count) {
+													$output .= "selected ";
+												} elseif (!isset($position) && $current_subject["position"] == $count) {
+													$output .= "selected ";
+												}
 		                    $output .= "value=\"{$count}\">";
 		                    $output .= $count;
 		                    $output .= "</option>";
@@ -104,10 +104,10 @@
 
 	            <!-- Input: Visibility -->
            		 <p>Visibility</p>
-              	<input name="visible" type="radio" id="visible_true" value="1" <?php if($current_subject["visible"]==1){echo "checked";} ?> />
+              	<input name="visible" type="radio" id="visible_true" value="1" <?php if(isset($visible) && $visible == 1){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==1){echo "checked";} ?> />
               	<label for="visible_true">Visible</label>
               	<span class="side-margin-adder">or</span>
-             	<input name="visible" type="radio" id="visible_hidden" value="0" <?php if($current_subject["visible"]==0){echo "checked";} ?> />
+             	<input name="visible" type="radio" id="visible_hidden" value="0" <?php if(isset($visible) && $visible == 0){ echo "checked"; } elseif(!isset($visible) && $current_subject["visible"]==0){echo "checked";} ?> />
               	<label for="visible_hidden">Hidden</label>
 
             	<!-- Submit Button -->
@@ -133,6 +133,7 @@
   <script type="text/javascript">
 	 	$(document).ready(function() {
 	    	$('select').material_select();
+				// mainly used for errors (such as validation) where error message is stored in session and toasted to indicate to user of failure
 				<?php toast_message(); ?>
 	  });
 	</script>
