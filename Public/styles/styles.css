@@ -67,10 +67,20 @@ footer {
   display: inline;
 }
 
+.inline_block {
+  display: inline-block;
+}
+
 .block {
   display:block;
 }
 
 form {
   margin-bottom: 25px;
+}
+
+.hamburger_border {
+  border-top: 1px grey solid;
+  border-bottom: 1px grey solid;
+  padding: 10px 5px;
 }

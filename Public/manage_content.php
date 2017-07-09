@@ -35,25 +35,27 @@
               $shown = "Hidden";
             }
 
-            if(isset($current_subject)){
-              // title
-              $output = "<h2>Subject Overview</h2>";
-              // menu name              
-              $output .= "<p class='menu_name'>Menu Name: </p>";
-              $output .= "<p class='inline'> {$current_subject["menu_name"]} </p>";
-              // position
-              $output .= "<p><span class='bold'>Position:</span> {$current_subject["position"]}<p>";
-              // visibility
-              $output .= "<p><span class='bold'>Status:</span> {$shown}<p>";
-              // edit button
-              $output .= "<br>"; // break after menu name echo
-              $output .= "<a href='edit_subject.php?subject={$current_subject["id"]}' class='margin-adder waves-effect waves-light btn'>";
-              $output .= "<i class='material-icons right'>mode_edit</i>";
-              $output .= "Edit Subject</a>";
-              // echo and unset
-              echo $output;
-              unset($output);
-            }
+            if(isset($current_subject)) { // close php tags to use html inside if condition  ?>
+              <!-- title -->
+              <h2>Subject Overview</h2>
+              <!-- menu name -->
+              <p class='menu_name'>Menu Name: </p>
+              <p class='inline'> <?php echo $current_subject["menu_name"]; ?> </p>
+              <!-- position -->
+              <p> <span class='bold'>Position:</span> <?php echo $current_subject["position"]; ?> <p>
+              <!-- visibility -->
+              <p> <span class='bold'>Status:</span> <?php echo $shown; ?> <p>
+              <!-- break after subject properties section -->
+              <br>
+              <!-- edit button -->
+              <a href="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" class="waves-effect waves-light btn">
+                <i class='material-icons left'>mode_edit</i> Edit </a>
+              <!-- delete button -->
+              <a class="waves-effect waves-light btn" href="#delete_modal">
+                <i class='material-icons left'>delete</i> Delete </a>
+              <?php /*Include structure for deletion modal*/ include '../includes/layout/delete_modal.php'; ?>
+
+            <?php } // open up php tag and close if condition for the rest of the php code after html has been output
             elseif (isset($current_page)){
               echo "<h2>Page Overview</h1>";
               echo "<p class='menu_name'>Page Name: </p>";
@@ -82,6 +84,8 @@
   <script type="text/javascript">
     $(document).ready(function() {
       <?php toast_message(); ?>
+      // initialize materialize modal
+      $('.modal').modal();
     });
   </script>
 
