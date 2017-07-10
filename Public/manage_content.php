@@ -87,6 +87,10 @@
       // initialize materialize modal
       $('.modal').modal();
     });
+    <?php
+      // get js and jquery code for validating delete modal form, matching entered menu name to the menu name user is trying to delete
+      if(isset($current_subject)){modal_confirm_delete($current_subject["menu_name"]);} elseif (isset($current_page)) {modal_confirm_delete($current_page["menu_name"]);}
+    ?>
   </script>
 
 </body>
