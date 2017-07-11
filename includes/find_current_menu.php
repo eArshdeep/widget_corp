@@ -5,7 +5,6 @@
   if(isset($_GET["subject"])){
     $current_subject = find_subject_by_id($_GET["subject"]);
   } elseif (isset($_GET["page"])) {
-    $selected_page_id = $_GET["page"];
     $current_page = find_page_by_id($_GET["page"]);
   }
 ?>
