@@ -22,7 +22,7 @@
     <p>If you wish to proceed, please type the name of the <?php echo $type; ?> below to confirm.</p>
     <div class="divider"></div>
     <!-- Name to enter -->
-    <p class="hamburger_border bold inline_block"> <?php echo $current["menu_name"]; ?> </p>
+    <p class="hamburger_border bold inline_block"> <?php echo htmlentities($current["menu_name"]); ?> </p>
     <!-- Form for delete confirmation -->
     <form action="<?php if($type==="Subject"){echo "delete_subject.php";} elseif ($type==="Page"){echo "delete_page.php";} ?>" id="confirmation_form" method="post">
       <div class="input-field">

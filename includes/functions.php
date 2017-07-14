@@ -81,7 +81,8 @@
       $output = "<p class='margin-adder'>Please fix the following:</p>";
       $output .= "<ul>";
       foreach ($errors as $field => $error) {
-        $output .= "<li class='make_list'>{$error}</li>";
+        $error = htmlentities($error);
+        $output .= "<li class='make_list'> {$error} </li>";
       }
       $output .= "</ul>";
     }
@@ -89,9 +90,10 @@
     echo $output;
   }
 
-  function repopulate_name($name){
+  function repopulate_menu_name($name){
     if( isset($_SESSION[$name]) ) {
-      echo "value='{$_SESSION[$name]}'";
+      $menu_name = htmlentities($_SESSION[$name]);
+      echo "value='{$menu_name}'";
       $_SESSION[$name] = null;
     }
   }

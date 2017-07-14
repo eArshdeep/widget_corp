@@ -40,15 +40,15 @@
               <h2>Subject Overview</h2>
               <!-- menu name -->
               <p class='menu_name'>Menu Name: </p>
-              <p class='inline'> <?php echo $current_subject["menu_name"]; ?> </p>
+              <p class='inline'> <?php echo htmlentities($current_subject["menu_name"]); ?> </p>
               <!-- position -->
               <p> <span class='bold'>Position:</span> <?php echo $current_subject["position"]; ?> <p>
               <!-- visibility -->
-              <p> <span class='bold'>Status:</span> <?php echo $shown; ?> <p>
+              <p> <span class='bold'>Status:</span> <?php echo htmlentities($shown); ?> <p>
               <!-- break after subject properties section -->
               <br>
               <!-- edit button -->
-              <a href="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" class="waves-effect waves-light btn">
+              <a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>" class="waves-effect waves-light btn">
                 <i class='material-icons left'>mode_edit</i> Edit </a>
               <!-- delete button -->
               <a class="waves-effect waves-light btn" href="#delete_modal">

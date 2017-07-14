@@ -36,7 +36,7 @@
       }
 
       if(has_presence($visible)){
-          $_SESSION["repop_visible"] = $visible;
+        $_SESSION["repop_visible"] = $visible;
       }
 
       // redirect user to new subject form

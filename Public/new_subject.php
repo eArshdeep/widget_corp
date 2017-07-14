@@ -28,7 +28,7 @@
           <form action="create_subject.php" method="post">
             <!-- Input: menu name -->
             <div class="input-field">
-              <input placeholder="Menu name" id="menu_name" name="menu_name" type="text" <?php repopulate_name("repop_menu_name"); ?>>
+              <input placeholder="Menu name" id="menu_name" name="menu_name" type="text" <?php repopulate_menu_name("repop_menu_name"); ?>>
               <label for="menu_name" <?php if(isset($errors["menu_name"])){echo "class='red-text'";} ?>>Menu Name</label>
             </div>
             <!-- Input: Position -->
