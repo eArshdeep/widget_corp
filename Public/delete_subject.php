@@ -1,9 +1,16 @@
 <?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
-<?php include '../includes/find_current_menu.php'; ?>
 
 <?php
+
+  // if no form post was submitted, redirect to homepage
+  if(!isset($_POST["submit"])) {
+    redirect_to("index.php");
+  }
+
+  // get current subject
+  $current_subject = find_subject_by_id($_POST["subject"]);
 
   // redirect if subject not found in database
   if(!isset($current_subject)){

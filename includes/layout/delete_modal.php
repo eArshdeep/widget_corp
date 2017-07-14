@@ -23,16 +23,20 @@
     <div class="divider"></div>
     <!-- Name to enter -->
     <p class="hamburger_border bold inline_block"> <?php echo $current["menu_name"]; ?> </p>
-    <!-- Input field for confirm -->
-    <div class="input-field">
-      <!-- Input field for menu name confirmation -->
-      <input placeholder="About Us" id="confirm_menu_name" type="text">
-      <label for="menu_name"><?php echo $type; ?> Name</label>
-    </div>
+    <!-- Form for delete confirmation -->
+    <form action="<?php if($type==="Subject"){echo "delete_subject.php";} elseif ($type==="Page"){echo "delete_page.php";} ?>" id="confirmation_form" method="post">
+      <div class="input-field">
+        <!-- Input field for menu name confirmation -->
+        <input placeholder="About Us" id="confirm_menu_name" type="text">
+        <label for="menu_name"><?php echo $type; ?> Name</label>
+      </div>
+      <!-- Hidden POST value for id of subject or page to delete -->
+      <input type="hidden" name="<?php echo strtolower($type); ?>" value="<?php echo $current["id"]; ?>">
+    </form>
   </div>
   <div class="modal-footer">
     <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    <a href="delete_subject.php?<?php echo strtolower($type) . "=" . $current["id"]; ?>" class="disabled modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
+    <input form="confirmation_form" name="submit" value="Delete" type="submit" class="disabled modal-action modal-close waves-effect waves-red btn-flat">
   </div>
 </div>
 
@@ -41,7 +45,7 @@
   function modal_confirm_delete($menu_name){
     $output = "var target_menu_name = \"{$menu_name}\";";
     $output .= "$(\"#confirm_menu_name\").on(\"change paste keyup\", function() {";
-    $output .= "if($(this).val()==target_menu_name) {";
+    $output .= "if($(this).val().toLowerCase()==target_menu_name.toLowerCase()) {";
     $output .= "$(\".waves-red\").removeClass(\"disabled\");";
     $output .= "} else {";
     $output .= "$(\".waves-red\").addClass(\"disabled\");";
