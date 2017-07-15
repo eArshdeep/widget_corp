@@ -13,8 +13,8 @@
 /* Close PHP tags for raw HTML */ ?>
 
 <li class="make_list">
-  <a href="manage_content.php?page=<?php echo $page["id"]; ?>">
-    <?php echo $page["menu_name"]; ?>
+  <a class="link_underline" href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>">
+    <?php echo htmlentities($page["menu_name"]); ?>
   </a>
 </li>
 

@@ -74,7 +74,7 @@
       <section class="col s12 m10">
         <div class="container">
         	<!-- Menu name -->
-        	<h2> Edit Subject: <span class="normal"><?php echo htmlentities($current_subject["menu_name"]); ?></span> </h2>
+        	<h2> Edit Subject: <span class="light-weight"><?php echo htmlentities($current_subject["menu_name"]); ?></span> </h2>
         	<!-- Form -->
         	<form action="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" method="post">
         		<!-- Input: Menu name -->

@@ -17,9 +17,11 @@
     <!-- Title -->
     <h4>Delete <?php echo $type; ?>?</h4>
     <!-- Body -->
-    <p>Are you sure you want to delete the current <?php echo $type; ?>?</p>
-    <p>There is no way to undo this action, and any subjects deleted that still have any pages will also be deleted.</p>
-    <p>If you wish to proceed, please type the name of the <?php echo $type; ?> below to confirm.</p>
+    <p>Are you sure you want to delete the current <?php echo strtolower($type); ?>?</p>
+    <!-- Conditional code, bits of warning relating to subjects are only shown if and when deleting a subject -->
+    <p>There is no way to undo this action<?php echo $type == "Subject" ? ", and any subjects deleted that still have any pages will also be deleted." : "."; ?>
+    </p>
+    <p>If you wish to proceed, please type the name of the <?php echo strtolower($type); ?> below to confirm.</p>
     <div class="divider"></div>
     <!-- Name to enter -->
     <p class="hamburger_border bold inline_block"> <?php echo htmlentities($current["menu_name"]); ?> </p>
@@ -27,7 +29,7 @@
     <form action="<?php if($type==="Subject"){echo "delete_subject.php";} elseif ($type==="Page"){echo "delete_page.php";} ?>" id="confirmation_form" method="post">
       <div class="input-field">
         <!-- Input field for menu name confirmation -->
-        <input placeholder="About Us" id="confirm_menu_name" type="text">
+        <input placeholder="<?php echo htmlentities($current["menu_name"]); ?>" id="confirm_menu_name" type="text">
         <label for="menu_name"><?php echo $type; ?> Name</label>
       </div>
       <!-- Hidden POST value for id of subject or page to delete -->
