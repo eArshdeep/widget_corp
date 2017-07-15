@@ -29,15 +29,7 @@
         <div class="container">
           <?php
             // SUBJECT OVERVIEW
-            if(isset($current_subject)) {
-
-              // get verbal value for visiblity
-              if($current_subject["visible"]==1){
-                $shown = "Shown";
-              } elseif($current_subject["visible"]==0){
-                $shown = "Hidden";
-              }
-          // close php tags for raw html ?>
+            if(isset($current_subject)) { /* close php tags for raw html */ ?>
 
               <!-- title -->
               <h2>Subject Overview</h2>
@@ -47,7 +39,7 @@
               <!-- position -->
               <p> <span class='bold'>Position:</span> <?php echo $current_subject["position"]; ?> <p>
               <!-- visibility -->
-              <p> <span class='bold'>Status:</span> <?php echo htmlentities($shown); ?> <p>
+              <p> <span class='bold'>Status:</span> <?php echo $current_subject["visible"] == 1 ? "Shown" : "Hidden"; ?> <p>
               <!-- break after subject properties section -->
               <br>
               <!-- edit button -->
