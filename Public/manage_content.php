@@ -19,6 +19,7 @@
     <div class="row">
         <!-- NAV SECTION -->
         <section class="col s12 m2">
+          <a href="admin.php" class="back-to-dashboard-link">&laquo Dashboard</a>
           <?php include '../includes/layout/nav.php'; ?>
           <a href="new_subject.php">+ Add a new Subject</a>
         </section>
@@ -27,15 +28,17 @@
       <section class="col s12 m10">
         <div class="container">
           <?php
+            // SUBJECT OVERVIEW
+            if(isset($current_subject)) {
 
-            // get verbal value for visiblity
-            if($current_subject["visible"]==1){
-              $shown = "Shown";
-            } elseif($current_subject["visible"]==0){
-              $shown = "Hidden";
-            }
+              // get verbal value for visiblity
+              if($current_subject["visible"]==1){
+                $shown = "Shown";
+              } elseif($current_subject["visible"]==0){
+                $shown = "Hidden";
+              }
+          // close php tags for raw html ?>
 
-            if(isset($current_subject)) { // close php tags to use html inside if condition  ?>
               <!-- title -->
               <h2>Subject Overview</h2>
               <!-- menu name -->
@@ -55,12 +58,13 @@
                 <i class='material-icons left'>delete</i> Delete </a>
               <?php /*Include structure for deletion modal*/ include '../includes/layout/delete_modal.php'; ?>
 
-            <?php } // open up php tag and close if condition for the rest of the php code after html has been output
-            elseif (isset($current_page)){
-              echo "<h2>Page Overview</h1>";
-              echo "<p class='menu_name'>Page Name: </p>";
-              echo $current_page["menu_name"];
-            }
+              <?php /* Show subject's child pages if any*/ include '../includes/layout/subject_child_pages.php'; ?>
+
+          <?php  } /* end of if(isset($current_subject)) */
+            elseif (isset($current_page)){ /* end php tags for raw html */ ?>
+              <h2>Page Overview</h1>
+              <p class="menu_name">Page Name: </p>
+          <?php } // END elseif (isset($current_page))
             else {
               echo "<p>Please select a page or subject to manage or modify.</p>";
             }

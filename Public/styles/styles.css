@@ -25,6 +25,10 @@ h2 {
   font-size: 28px;
 }
 
+h3 {
+  font-size: 24px;
+}
+
 .normal {
   font-weight: 300;
 }
@@ -83,4 +87,10 @@ form {
   border-top: 1px grey solid;
   border-bottom: 1px grey solid;
   padding: 10px 5px;
+}
+
+.back-to-dashboard-link {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
 }
