@@ -33,7 +33,7 @@
         <label for="menu_name"><?php echo $type; ?> Name</label>
       </div>
       <!-- Hidden POST value for id of subject or page to delete -->
-      <input type="hidden" name="<?php echo strtolower($type); ?>" value="<?php echo $current["id"]; ?>">
+      <input type="hidden" name="<?php echo strtolower($type) . "_id"; ?>" value="<?php echo $current["id"]; ?>">
     </form>
   </div>
   <div class="modal-footer">

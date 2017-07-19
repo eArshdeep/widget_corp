@@ -10,7 +10,7 @@
   }
 
   // get current subject
-  $current_subject = find_subject_by_id($_POST["subject"]);
+  $current_subject = find_subject_by_id($_POST["subject_id"]);
 
   // redirect if subject not found in database
   if(!isset($current_subject)){
