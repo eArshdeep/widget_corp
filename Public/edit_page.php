@@ -14,12 +14,12 @@
 
 <?php
   if(isset($_POST["submit"])){
-
 		// handle values
 		$id = (int) $current_page["id"];
 		$menu_name = $_POST["menu_name"];
     $content = $_POST["content"];
 		$position = (int) $_POST["position"];
+    $subject_id = (int) $_POST["subject"];
 		$visible = (int) $_POST["visible"];
 
 		// escape
@@ -27,7 +27,7 @@
     $content = mysqli_real_escape_string($db, $content);
 
     // validate form values
-    $required_fields = array("menu_name", "position", "visible", "content");
+    $required_fields = array("menu_name", "position", "visible", "content", "subject");
     validate_presences($required_fields);
 
     $fields_with_length_limit = array("menu_name" => 30);
@@ -35,7 +35,7 @@
 
     if(empty($errors)){
 	    // If no validation errors... Perform Update
-			$query = "UPDATE pages SET menu_name = '{$menu_name}', position = {$position}, visible = {$visible}, content = '{$content}' WHERE id = {$id} LIMIT 1;";
+			$query = "UPDATE pages SET menu_name = '{$menu_name}', position = {$position}, visible = {$visible}, content = '{$content}', subject_id = {$subject_id} WHERE id = {$id} LIMIT 1;";
 			$result = mysqli_query($db, $query);
 
 			if($result && mysqli_affected_rows($db) == 1){
@@ -85,30 +85,57 @@
           		<label for="menu_name" <?php if(isset($errors["menu_name"])){echo "class='red-text'";} ?> >Page Name</label>
             </div>
 
-            	<!-- Input: Position -->
-	            <div class="input-field">
-	              <select name="position">
-	                <option value="" disabled>Select Position</option>
-	                  <?php
-		                  $page_set = find_pages_for_subject($current_page["subject_id"]);
-		                  $page_count = mysqli_num_rows($page_set);
-		                  for($count=1; $count <= $page_count; $count++){
-		                    $output = "<option ";
-												if (isset($position) && $position == $count) {
-													$output .= "selected ";
-												} elseif (!isset($position) && $current_page["position"] == $count) {
-													$output .= "selected ";
-												}
-		                    $output .= "value=\"{$count}\">";
-		                    $output .= $count;
-		                    $output .= "</option>";
-		                    echo $output;
-		                    unset($output);
-		                  }
-	                  ?>
-	              </select>
-	              <label>Page Position</label>
-	            </div>
+            <!-- Input: Position -->
+            <div class="input-field">
+              <select name="position">
+                <option value="" disabled>Select Position</option>
+                  <?php
+                    $page_set = find_pages_for_subject($current_page["subject_id"]);
+                    $page_count = mysqli_num_rows($page_set);
+                    for($count=1; $count <= $page_count; $count++){
+                      $output = "<option ";
+                      if (isset($position) && $position == $count) {
+                        $output .= "selected ";
+                      } elseif (!isset($position) && $current_page["position"] == $count) {
+                        $output .= "selected ";
+                      }
+                      $output .= "value=\"{$count}\">";
+                      $output .= $count;
+                      $output .= "</option>";
+                      echo $output;
+                      unset($output);
+                    }
+                  ?>
+              </select>
+              <label>Page Position</label>
+            </div>
+
+            <!-- Input: Parent Subject -->
+            <div class="input-field">
+              <select name="subject">
+                <option value="" disabled>Select Parent Subject</option>
+                  <?php
+                    $subject_set = find_all_subjects();
+                    while ($this_subject = mysqli_fetch_assoc($subject_set)) {
+                      $output = "<option ";
+                      $output .= "value=";
+                      $output .= "\"{$this_subject["id"]}\"";
+                      if(isset($subject_id) && $subject_id == $this_subject["id"]){
+                        $output .= " selected";
+                      }
+                      elseif (!isset($subject_id) && $current_page["subject_id"] == $this_subject["id"]){
+                        $output .= " selected";
+                      }
+                      $output .= ">";
+                      $output .= $this_subject["menu_name"];
+                      $output .= "</option>";
+                      echo $output;
+                      unset($output);
+                    }
+                  ?>
+              </select>
+              <label>Parent Subject</label>
+            </div>
 
 	            <!-- Input: Visibility -->
 							<!-- Title -->
