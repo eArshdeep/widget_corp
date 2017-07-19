@@ -30,7 +30,7 @@
 
 <!-- Links for delete and edit-->
 <!-- edit button -->
-<a href="edit_page.php?subject=<?php echo urlencode($current_page["id"]); ?>" class="waves-effect waves-light btn">
+<a href="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>" class="waves-effect waves-light btn">
   <i class='material-icons left'>mode_edit</i> Edit </a>
 
 <!-- delete button -->
