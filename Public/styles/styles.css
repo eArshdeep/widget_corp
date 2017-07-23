@@ -101,3 +101,9 @@ form {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+.desktop-nav-position {
+  height: -webkit-calc(100% - 96px);
+  position: relative;
+  top: 68px;
+}

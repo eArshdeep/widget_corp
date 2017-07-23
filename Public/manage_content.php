@@ -19,9 +19,9 @@
     <div class="row">
         <!-- NAV SECTION -->
         <section class="col s12 m2">
-          <a href="admin.php" class="back-to-dashboard-link">&laquo Dashboard</a>
+          <!-- <a href="admin.php" class="back-to-dashboard-link">&laquo Dashboard</a> -->
           <?php include '../includes/layout/nav.php'; ?>
-          <a href="new_subject.php">+ Add a new Subject</a>
+          <!-- <a href="new_subject.php">+ Add a new Subject</a> -->
         </section>
 
       <!-- MAIN SECTION -->
@@ -35,7 +35,7 @@
               include '../includes/layout/page_overview.php';
             }
             else {
-              echo "<p>Please select a page or subject to manage or modify.</p>";
+              echo "<p>Please select a page or subject to manage or modify. <span class=\"hide-on-med-and-up\">Swipe right to view the navigation.</span></p>";
             }
           ?>
         </div>
@@ -59,6 +59,8 @@
       <?php toast_message(); ?>
       // initialize materialize modal
       $('.modal').modal();
+      // initialize materialize side navbar hamburger for mobile
+      $(".button-collapse").sideNav();
     });
     <?php
       // get js and jquery code for validating delete modal form, matching entered menu name to the menu name user is trying to delete
