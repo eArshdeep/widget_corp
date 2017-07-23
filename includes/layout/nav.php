@@ -1,27 +1,22 @@
 <?php include '../includes/find_current_menu.php'; ?>
 <?php $subject_set = find_all_subjects(); ?>
 
-<!-- Mobile Navigation Hamburger -->
-<a href="#" data-activates="content_mobile_nav" class="button-collapse hide-on-med-and-up">
-  <i class="material-icons">menu</i>
-</a>
-
 <!-- Desktop Subject and Page Navigation -->
-<ul class="side-nav fixed hide-on-med-and-down desktop-nav-position">
+<ul class="side-nav fixed show-on-medium-and-up desktop-nav-position">
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
 
   <!-- List item for each subject -->
   <li>
     <!-- Subject Name -->
-    <a href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>" >
+    <a <?php if($subject["id"]===$current_subject["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>" >
       <?php echo htmlentities($subject["menu_name"]); ?>
     </a>
     <!-- Unordered List for Subject's Pages -->
     <ul>
       <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
         <li>
-          <a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>">
+          <a <?php if($page["id"]===$current_page["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?page=<?php echo urlencode($page['id']); ?>">
             <?php echo htmlentities($page["menu_name"]); ?>
           </a>
         </li>
@@ -43,14 +38,14 @@ mysqli_data_seek($subject_set, 0);
   <!-- List item for each subject -->
   <li>
     <!-- Subject Name -->
-    <a href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>" >
+    <a <?php if($subject["id"]===$current_subject["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>" >
       <?php echo htmlentities($subject["menu_name"]); ?>
     </a>
 
     <ul>
       <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
         <li>
-          <a href="manage_content.php?page=<?php echo urlencode($page['id']); ?>">
+          <a <?php if($page["id"]===$current_page["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?page=<?php echo urlencode($page['id']); ?>">
             <?php echo htmlentities($page["menu_name"]); ?>
           </a>
         </li>

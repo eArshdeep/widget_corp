@@ -6,7 +6,7 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header($display_admin_link = true); ?>
+  <?php generate_header(); ?>
 
   <main>
     <div class="container">

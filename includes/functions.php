@@ -51,23 +51,17 @@
     } else {return null;}
   }
 
-  function generate_header($display_admin_link=false){
+  function generate_header($display_content_nav=false){
     $output = '<nav>';
     $output .= '<div class="nav-wrapper orange">';
        $output .= '<h1 class="margin-remover">';
          $output .= '<a href="index.php" class="brand-logo center">Widget Corporation</a>';
        $output .= '</h1>';
-       if($display_admin_link===true){
-         // hamburger icon
-         $output .= '<a href="#" data-activates="admin_nav" class="button-collapse"><i class="material-icons">menu</i></a>';
-         // nav
-         $output .= '<ul class="left hide-on-med-and-down">';
-           $output .= '<a href="admin.php">Administrator Area</a>';
-         $output .= '</ul>';
-         // mobile nav
-         $output .= '<ul class="side-nav" id="admin_nav">';
-          $output .= '<li><a href="admin.php">Administrator Area</a>';
-         $output .= '</ul>';
+       if($display_content_nav===true){
+         // Mobile Navigation Hamburger
+         $output .= "<a href=\"#\" data-activates=\"content_mobile_nav\" class=\"button-collapse show-on-small\">";
+           $output .= "<i class=\"material-icons\">menu</i>";
+         $output .= "</a>";
        }
      $output .= '</div>';
     $output .= '</nav>';
