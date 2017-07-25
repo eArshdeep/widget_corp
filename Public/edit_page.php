@@ -154,7 +154,7 @@
 							<label for="visible_hidden">Hidden</label>
 
               <!-- Content -->
-              <div class="input-field margin-large-adder">
+              <div class="input-field margin-top-large-adder">
                 <textarea name="content" id="content" class="materialize-textarea"><?php
                   if(isset($content)) { echo htmlentities($content); }
                   else { echo htmlentities($current_page["content"]); }
@@ -163,7 +163,7 @@
               </div>
 
             	<!-- Submit Button -->
-            	<button class="block btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Submit</button>
+            	<button class="block btn waves-effect waves-light margin-top-adder" type="submit" name="submit" value="true">Submit</button>
 
         	</form>
 

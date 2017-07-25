@@ -12,7 +12,7 @@
     while ($page = mysqli_fetch_assoc($page_set)){
 /* Close PHP tags for raw HTML */ ?>
 
-<li class="make_list">
+<li class="bulletize">
   <a class="link_underline" href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>">
     <?php echo htmlentities($page["menu_name"]); ?>
   </a>

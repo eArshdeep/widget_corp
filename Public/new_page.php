@@ -79,7 +79,7 @@
             <label for="visible_hidden">Hidden</label>
 
             <!-- Content -->
-            <div class="input-field margin-large-adder">
+            <div class="input-field margin-top-large-adder">
               <textarea id="content" class="materialize-textarea" name="content"><?php
                 if (isset($_SESSION["repop_content"])) {
                   echo htmlentities($_SESSION["repop_content"]);
@@ -92,7 +92,7 @@
             <input type="hidden" name="subject_id" value="<?php echo htmlentities($parent_subject["id"]); ?>" >
 
             <!-- Submit Button -->
-            <button style="display:block;" class="btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Create</button>
+            <button style="display:block;" class="btn waves-effect waves-light margin-top-adder" type="submit" name="submit" value="true">Create</button>
 
           </form>
           <a href="manage_content.php?subject=<?php echo urlencode($parent_subject["id"]); ?>" class="orange-text">&#8592; Cancel</a>

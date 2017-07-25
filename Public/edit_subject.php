@@ -125,7 +125,7 @@
 							<label for="visible_hidden">Hidden</label>
 
             	<!-- Submit Button -->
-            	<button class="block btn waves-effect waves-light margin-adder" type="submit" name="submit" value="true">Submit</button>
+            	<button class="block btn waves-effect waves-light margin-top-adder" type="submit" name="submit" value="true">Submit</button>
 
         	</form>
 

@@ -23,7 +23,7 @@
 <p> <span class='bold'>Status:</span> <?php echo $current_page["visible"] == 1 ? "Shown" : "Hidden"; ?> <p>
 
 <!-- Content -->
-<div class="input-field margin-large-adder">
+<div class="input-field margin-top-large-adder">
   <textarea disabled id="content" class="materialize-textarea"> <?php echo htmlentities($current_page["content"]); ?> </textarea>
   <label for="content">Content</label>
 </div>

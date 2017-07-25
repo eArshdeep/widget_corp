@@ -54,7 +54,7 @@
   function generate_header($display_content_nav=false){
     $output = '<nav>';
     $output .= '<div class="nav-wrapper orange">';
-       $output .= '<h1 class="margin-remover">';
+       $output .= '<h1 class="margin-top-zero">';
          $output .= '<a href="index.php" class="brand-logo center">Widget Corporation</a>';
        $output .= '</h1>';
        if($display_content_nav===true){
@@ -72,11 +72,11 @@
     $output = null;
 
     if(!empty($errors)){
-      $output = "<p class='margin-adder'>Please fix the following:</p>";
+      $output = "<p class='margin-top-adder'>Please fix the following:</p>";
       $output .= "<ul>";
       foreach ($errors as $field => $error) {
         $error = htmlentities($error);
-        $output .= "<li class='make_list'> {$error} </li>";
+        $output .= "<li class='bulletize'> {$error} </li>";
       }
       $output .= "</ul>";
     }
