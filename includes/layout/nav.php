@@ -3,6 +3,9 @@
 
 <!-- Desktop Subject and Page Navigation -->
 <ul class="side-nav fixed show-on-medium-and-up desktop-nav-position">
+  <!-- Back to dashboard link -->
+  <li><a href="admin.php">&laquo Dashboard</a></li>
+
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
 
@@ -24,6 +27,16 @@
     </ul> <!-- End Unordered List for pages -->
   </li> <!-- End List item for subjects -->
   <?php } // close subject_set while loop ?>
+
+  <?php
+    // New Subject Button, only shows on ~/manage_content.php page
+    if (basename($_SERVER["REQUEST_URI"], ".php") == "manage_content") { ?>
+      <!-- New Subject Button -->
+      <li>
+        <a href="new_subject.php">+ Add a new Subject</a>
+      </li>
+  <?php } ?>
+
 </ul>  <!-- End Unordered list for subjects-->
 
 <?php
@@ -33,6 +46,9 @@ mysqli_data_seek($subject_set, 0);
 
 <!-- Mobile Subject and Page Navigation -->
 <ul class="side-nav" id="content_mobile_nav">
+  <!-- Back to dashboard link -->
+  <li><a href="admin.php">&laquo Dashboard</a></li>
+
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
   <!-- List item for each subject -->
@@ -53,4 +69,14 @@ mysqli_data_seek($subject_set, 0);
     </ul>
   </li>
   <?php } // close subject_set while loop ?>
+
+  <?php
+    // New Subject Button, only shows on ~/manage_content.php page
+    if (basename($_SERVER["REQUEST_URI"], ".php") == "manage_content") { ?>
+      <!-- New Subject Button -->
+      <li>
+        <a href="new_subject.php">+ Add a new Subject</a>
+      </li>
+  <?php } ?>
+
 </ul>

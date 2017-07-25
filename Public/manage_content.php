@@ -19,9 +19,7 @@
     <div class="row">
         <!-- NAV SECTION -->
         <section class="col s12 m2">
-          <!-- <a href="admin.php" class="back-to-dashboard-link">&laquo Dashboard</a> -->
           <?php include '../includes/layout/nav.php'; ?>
-          <!-- <a href="new_subject.php">+ Add a new Subject</a> -->
         </section>
 
       <!-- MAIN SECTION -->
