@@ -4,7 +4,7 @@
   define("DB_PASS", "secretpassword");
   define("DB_NAME", "widget_corp");
 
-  $db = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+  $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
   // check for db connection errors
   if(mysqli_connect_errno()){

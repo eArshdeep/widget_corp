@@ -55,7 +55,7 @@ ul.pages {
 }
 
 .selected {
-  
+
 }
 
 footer {
@@ -106,4 +106,8 @@ form {
   height: -webkit-calc(100% - 96px);
   position: relative;
   top: 68px;
+}
+
+.subject_overview_buttons {
+  margin: 5px;
 }

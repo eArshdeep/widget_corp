@@ -18,17 +18,17 @@
 <br>
 
 <!-- edit button -->
-<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>" class="waves-effect waves-light btn">
+<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>" class="subject_overview_buttons waves-effect waves-light btn">
   <i class='material-icons left'>mode_edit</i> Edit
 </a>
 
 <!-- delete button -->
-<a class="waves-effect waves-light btn" href="#delete_modal">
+<a class="subject_overview_buttons waves-effect waves-light btn" href="#delete_modal">
   <i class='material-icons left'>delete</i> Delete
 </a>
 
 <!-- new page button -->
-<a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?>" class="waves-effect waves-light btn"> &plus; Add Page </a>
+<a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?>" class="subject_overview_buttons waves-effect waves-light btn"> &plus; Add Page </a>
 
 <?php /*Include structure for deletion modal*/ include '../includes/layout/delete_modal.php'; ?>
 <?php /* Show subject's child pages if any*/ include '../includes/layout/subject_child_pages.php'; ?>
