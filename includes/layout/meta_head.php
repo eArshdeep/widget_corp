@@ -7,3 +7,5 @@
 <link rel="stylesheet" type="text/css" href="../Public/styles/styles.css">
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico" >

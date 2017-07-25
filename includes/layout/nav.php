@@ -30,7 +30,7 @@
 
   <?php
     // New Subject Button, only shows on ~/manage_content.php page
-    if (basename($_SERVER["REQUEST_URI"], ".php") == "manage_content") { ?>
+    if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == "manage_content.php") { ?>
       <!-- New Subject Button -->
       <li>
         <a href="new_subject.php">+ Add a new Subject</a>
@@ -72,7 +72,7 @@ mysqli_data_seek($subject_set, 0);
 
   <?php
     // New Subject Button, only shows on ~/manage_content.php page
-    if (basename($_SERVER["REQUEST_URI"], ".php") == "manage_content") { ?>
+    if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == "manage_content.php") { ?>
       <!-- New Subject Button -->
       <li>
         <a href="new_subject.php">+ Add a new Subject</a>
