@@ -187,6 +187,7 @@
 	    	$('select').material_select();
 				// mainly used for errors (such as validation) where error message is stored in session and toasted to indicate to user of failure
 				<?php toast_message(); ?>
+				$('#content').trigger('autoresize');
 	  });
 	</script>
 

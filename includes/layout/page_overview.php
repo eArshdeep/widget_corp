@@ -24,7 +24,7 @@
 
 <!-- Content -->
 <div class="input-field margin-top-large-adder">
-  <textarea disabled id="content" class="materialize-textarea"> <?php echo htmlentities($current_page["content"]); ?> </textarea>
+  <textarea disabled id="content" class="truncate materialize-textarea"> <?php echo htmlentities($current_page["content"]); ?> </textarea>
   <label for="content">Content</label>
 </div>
 
