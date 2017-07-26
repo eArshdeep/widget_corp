@@ -1,5 +1,5 @@
 <?php include '../includes/find_current_menu.php'; ?>
-<?php $subject_set = find_all_subjects(); ?>
+<?php $subject_set = find_all_subjects($context_public = false); ?>
 
 <!-- Desktop Subject and Page Navigation -->
 <ul class="side-nav fixed show-on-medium-and-up desktop-nav-position">
@@ -7,7 +7,7 @@
   <li><a href="admin.php">&laquo Dashboard</a></li>
 
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
-  <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
+  <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"], $context_public = false); ?>
 
   <!-- List item for each subject -->
   <li>

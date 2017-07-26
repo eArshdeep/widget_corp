@@ -11,18 +11,26 @@
     }
   }
 
-  function find_all_subjects(){
+  function find_all_subjects($context_public = true){
     global $db;
-    $query = "SELECT * FROM subjects ORDER BY position ASC;";
+    $query = "SELECT * FROM subjects ";
+    if ($context_public == true) {
+      $query .= "WHERE visible = 1 ";
+    }
+    $query .= "ORDER BY position ASC";
     $query = mysqli_real_escape_string($db, $query);
     $subject_set = mysqli_query($db, $query);
     confirm_query($subject_set);
     return $subject_set;
   }
 
-  function find_pages_for_subject($subject_id){
+  function find_pages_for_subject($subject_id, $context_public = true){
     global $db;
-    $query = "SELECT * FROM pages WHERE subject_id = {$subject_id} ORDER BY position ASC;";
+    $query = "SELECT * FROM pages WHERE subject_id = {$subject_id} ";
+    if ($context_public == true) {
+      $query .= "AND visible = 1 ";
+    }
+    $query .= "ORDER BY position ASC";
     $query = mysqli_real_escape_string($db, $query);
     $page_set = mysqli_query($db, $query);
     confirm_query($page_set);
