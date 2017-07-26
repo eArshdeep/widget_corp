@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Widget Corp</title>
+  <title>New Page</title>
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
   <?php
-    generate_header();
+    generate_header($display_content_nav=true);
     $errors = grab_errors();
     // get the subject for which we are trying to add the page
     $parent_subject = find_subject_by_id($_GET["subject"]);
@@ -111,6 +111,7 @@
       // initialize html select forms
       $('select').material_select();
       <?php toast_message(); ?>
+      $(".button-collapse").sideNav();
     });
   </script>
 

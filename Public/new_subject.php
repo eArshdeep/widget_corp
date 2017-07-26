@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Widget Corp</title>
+  <title>New Subject</title>
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
   <?php
-    generate_header();
+    generate_header($display_content_nav=true);
     $errors = grab_errors();
   ?>
 
@@ -81,6 +81,7 @@
       // initialize html select forms
       $('select').material_select();
       <?php toast_message(); ?>
+      $(".button-collapse").sideNav();
     });
   </script>
 

@@ -59,11 +59,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Widget Corp</title>
+  <title>Edit Page</title>
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header(); ?>
+  <?php generate_header($display_content_nav=true); ?>
 
   <main>
     <div class="row">
@@ -188,6 +188,7 @@
 				// mainly used for errors (such as validation) where error message is stored in session and toasted to indicate to user of failure
 				<?php toast_message(); ?>
 				$('#content').trigger('autoresize');
+				$(".button-collapse").sideNav();
 	  });
 	</script>
 
