@@ -51,7 +51,7 @@
               <select name="position">
                 <option value="" disabled <?php if(!isset($_SESSION["repop_position"])){echo "selected";} ?> >Select Position</option>
                   <?php
-                  $page_set = find_pages_for_subject($parent_subject["id"]);
+                  $page_set = find_pages_for_subject($parent_subject["id"], false);
                   $page_count = mysqli_num_rows($page_set);
                   for($count=1; $count <=$page_count+1; $count++){
                     $output = "<option ";

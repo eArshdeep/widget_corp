@@ -22,10 +22,6 @@
     $subject_id = (int) $_POST["subject"];
 		$visible = (int) $_POST["visible"];
 
-		// escape
-		$menu_name = mysqli_real_escape_string($db, $menu_name);
-    $content = mysqli_real_escape_string($db, $content);
-
     // validate form values
     $required_fields = array("menu_name", "position", "visible", "content", "subject");
     validate_presences($required_fields);
@@ -34,6 +30,10 @@
     validate_max_lengths($fields_with_length_limit);
 
     if(empty($errors)){
+			// escape
+			$menu_name = mysqli_real_escape_string($db, $menu_name);
+			$content = mysqli_real_escape_string($db, $content);
+
 	    // If no validation errors... Perform Update
 			$query = "UPDATE pages SET menu_name = '{$menu_name}', position = {$position}, visible = {$visible}, content = '{$content}', subject_id = {$subject_id} WHERE id = {$id} LIMIT 1;";
 			$result = mysqli_query($db, $query);
@@ -90,7 +90,7 @@
               <select name="position">
                 <option value="" disabled>Select Position</option>
                   <?php
-                    $page_set = find_pages_for_subject($current_page["subject_id"]);
+                    $page_set = find_pages_for_subject($current_page["subject_id"], false);
                     $page_count = mysqli_num_rows($page_set);
                     for($count=1; $count <= $page_count; $count++){
                       $output = "<option ";
@@ -115,7 +115,7 @@
               <select name="subject">
                 <option value="" disabled>Select Parent Subject</option>
                   <?php
-                    $subject_set = find_all_subjects();
+                    $subject_set = find_all_subjects(false);
                     while ($this_subject = mysqli_fetch_assoc($subject_set)) {
                       $output = "<option ";
                       $output .= "value=";
@@ -159,7 +159,7 @@
                   if(isset($content)) { echo htmlentities($content); }
                   else { echo htmlentities($current_page["content"]); }
                 ?></textarea>
-                <label for="content">Page Content</label>
+                <label for="content" <?php if(isset($errors["content"])){echo "class='red-text'";} ?> >Page Content</label>
               </div>
 
             	<!-- Submit Button -->

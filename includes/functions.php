@@ -95,7 +95,7 @@
   function repopulate_menu_name($name){
     if( isset($_SESSION[$name]) ) {
       $menu_name = htmlentities($_SESSION[$name]);
-      echo "value='{$menu_name}'";
+      echo "value=\"{$menu_name}\"";
       $_SESSION[$name] = null;
     }
   }

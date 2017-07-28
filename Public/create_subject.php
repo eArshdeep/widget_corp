@@ -12,8 +12,6 @@
       $visible = (int) $_POST["visible"];
     }
 
-    // escape
-    $menu_name = mysqli_real_escape_string($db, $menu_name);
 
     // validate form values
     $required_fields = array("menu_name", "position", "visible");
@@ -42,6 +40,9 @@
       // redirect user to new subject form
       redirect_to("new_subject.php");
     }
+
+    // escape
+    $menu_name = mysqli_real_escape_string($db, $menu_name);
 
     // build query
     $query = "INSERT INTO subjects ( menu_name, position, visible) VALUES ( '{$menu_name}', {$position}, {$visible});";

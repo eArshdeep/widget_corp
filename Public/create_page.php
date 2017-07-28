@@ -14,10 +14,6 @@
     }
     $content = $_POST["content"];
 
-    // escape
-    $menu_name = mysqli_real_escape_string($db, $menu_name);
-    $content = mysqli_real_escape_string($db, $content);
-
     // validate form values
     $required_fields = array("menu_name", "position", "visible", "subject_id", "content");
     validate_presences($required_fields);
@@ -50,6 +46,10 @@
       redirect_to("new_page.php?subject={$subject_id}");
     }
 
+    // escape
+    $menu_name = mysqli_real_escape_string($db, $menu_name);
+    $content = mysqli_real_escape_string($db, $content);
+    
     // build query
     $query = "INSERT INTO pages ( menu_name, subject_id, position, visible, content) VALUES ( '{$menu_name}', {$subject_id}, {$position}, {$visible}, '{$content}');";
     $result = mysqli_query($db, $query);
