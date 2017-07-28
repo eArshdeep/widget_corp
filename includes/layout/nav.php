@@ -3,8 +3,22 @@
 
 <!-- Desktop Subject and Page Navigation -->
 <ul class="side-nav fixed show-on-medium-and-up desktop-nav-position">
+
   <!-- Back to dashboard link -->
-  <li><a href="admin.php">&laquo Dashboard</a></li>
+  <li>
+    <a href="admin.php">
+      <i class="material-icons">arrow_back</i> Dashboard
+    </a>
+  </li>
+
+  <!-- Log out -->
+  <li>
+    <a href="logout.php">
+      <i class="material-icons">exit_to_app</i> Log Out
+    </a>
+  </li>
+
+  <div class="divider"></div>
 
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"], $context_public = false); ?>
@@ -33,7 +47,9 @@
     if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == "manage_content.php") { ?>
       <!-- New Subject Button -->
       <li>
-        <a href="new_subject.php">+ Add a new Subject</a>
+        <a href="new_subject.php">
+          + Add a new Subject
+        </a>
       </li>
   <?php } ?>
 
@@ -46,8 +62,22 @@ mysqli_data_seek($subject_set, 0);
 
 <!-- Mobile Subject and Page Navigation -->
 <ul class="side-nav" id="content_mobile_nav">
+
   <!-- Back to dashboard link -->
-  <li><a href="admin.php">&laquo Dashboard</a></li>
+  <li>
+    <a href="admin.php">
+      <i class="material-icons">arrow_back</i> Dashboard
+    </a>
+  </li>
+
+  <!-- Log out -->
+  <li>
+    <a href="logout.php">
+      <i class="material-icons">exit_to_app</i> Log Out
+    </a>
+  </li>
+
+  <div class="divider"></div>
 
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>
@@ -75,7 +105,9 @@ mysqli_data_seek($subject_set, 0);
     if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == "manage_content.php") { ?>
       <!-- New Subject Button -->
       <li>
-        <a href="new_subject.php">+ Add a new Subject</a>
+        <a href="new_subject.php">
+          + Add a new Subject
+        </a>
       </li>
   <?php } ?>
 

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Administrators</title>
+  <title>Administrator</title>
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
@@ -13,9 +13,22 @@
     <div class="container">
       <section class="section">
 
-        <h2>Administrator Menu</h2>
+        <h2>Administrator Dashboard</h2>
 
         <div class="row">
+
+          <div class="col s12 m4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Welcome, Arshdeep</span>
+                <p>This is your dashboard. Here you can manage content on your website or edit permissions for other admins that you have created.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">Account Settings</a>
+                <a href="#">Log Out</a>
+              </div>
+            </div>
+          </div>
 
           <div class="col s12 m4">
             <div class="card blue-grey darken-1">
@@ -37,14 +50,6 @@
               </div>
               <div class="card-action">
                 <a href="#">Manage Administrators</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-1">
-              <div class="card-content">
-                <span class="card-title"><a class="white-text bold" href="#">Log Out</a></span>
               </div>
             </div>
           </div>
