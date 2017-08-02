@@ -49,7 +49,7 @@
                 <p>Manage site admins from creating new admins to removing legacy moderators.</p>
               </div>
               <div class="card-action">
-                <a href="#">Manage Administrators</a>
+                <a href="manage_admins.php">Manage Administrators</a>
               </div>
             </div>
           </div>

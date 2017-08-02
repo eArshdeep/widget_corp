@@ -92,7 +92,7 @@
     echo $output;
   }
 
-  function repopulate_menu_name($name){
+  function repopulate_text_field($name){
     if( isset($_SESSION[$name]) ) {
       $menu_name = htmlentities($_SESSION[$name]);
       echo "value=\"{$menu_name}\"";
@@ -105,6 +105,14 @@
       echo "checked";
       $_SESSION["repop_visible"] = null;
     }
+  }
+
+  function highlight_label($errors = array(), $field) {
+
+    if ( isset($errors[$field]) ) {
+      echo "class=\"red-text\"";
+    }
+
   }
 
 ?>

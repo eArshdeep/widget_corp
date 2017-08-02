@@ -44,4 +44,20 @@
     return in_array($value, $set);
   }
 
+  function larger_than_or_equal_to($value, $min){
+    return strlen($value) >= $min;
+  }
+
+  function validate_min_lengths($field_length_array){
+    // EXPECTS assoc array -> [field: min length allowed]
+    // NOTICE field must correspond to the name expected of the values found in the $_POST superglobal
+    global $errors;
+    foreach ($field_length_array as $field => $min) {
+      $value = trim($_POST[$field]);
+      if (!larger_than_or_equal_to($value, $min)) {
+        $errors[$field] = fieldname_as_text($field) . " is too short";
+      }
+    }
+  }
+
 ?>

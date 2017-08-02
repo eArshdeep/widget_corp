@@ -42,7 +42,7 @@
 
             <!-- Input: menu name -->
             <div class="input-field">
-              <input placeholder="Page Name" id="menu_name" name="menu_name" type="text" <?php repopulate_menu_name("repop_menu_name"); ?>>
+              <input placeholder="Page Name" id="menu_name" name="menu_name" type="text" <?php repopulate_text_field("repop_menu_name"); ?>>
               <label for="menu_name" <?php if(isset($errors["menu_name"])){echo "class='red-text'";} ?>>Page Name</label>
             </div>
 
