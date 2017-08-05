@@ -49,11 +49,12 @@
           <div class="input-field">
             <input id="password" type="password" class="validate" name="password">
             <label for="password" <?php highlight_label($errors, "password") ?> >Password</label>
+            <p class="brown-text text-lighten-2">Password should be atleast 8 or more characters.</p>
           </div>
 
           <!-- PASSWORD CONFIRMATION -->
           <div class="input-field">
-            <input id="confirm_password" type="password" class="validate" name="confirm_password">
+            <input id="confirm_password" type="password" name="confirm_password">
             <label for="confirm_password"
               <?php highlight_label($errors, "confirm_password") ?>
               data-error="Passwords do not match!" data-success="Password Match" > Confirm Password
@@ -65,7 +66,7 @@
           </div>
 
           <!-- Submit Button -->
-          <button class="btn waves-effect waves-light margin-top-adder" type="submit" name="submit">Create</button>
+          <button class="btn waves-effect waves-light margin-top-large-adder" type="submit" name="submit">Create</button>
 
         </form>
 
@@ -85,6 +86,7 @@
   <script type="text/javascript">
 
     $(document).ready(function () {
+      $("#password").keyup(checkPasswordMatch);
       $("#confirm_password").keyup(checkPasswordMatch);
       <?php toast_message(); ?>
     });
