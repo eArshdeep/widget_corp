@@ -85,7 +85,8 @@
   <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#confirm_password").keyup(checkPasswordMatch);
+      $("#confirm_password").keyup(checkPasswordMatch);
+      <?php toast_message(); ?>
     });
 
   </script>

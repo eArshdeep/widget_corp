@@ -1,3 +1,4 @@
+<?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
 <!DOCTYPE html>
@@ -54,6 +55,14 @@
 
   <?php include '../includes/layout/footer.php'; ?>
   <?php include '../includes/layout/meta_body.php'; ?>
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+      <?php toast_message(); ?>
+    });
+
+  </script>
 
 </body>
 </html>
