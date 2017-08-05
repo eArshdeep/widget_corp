@@ -51,10 +51,17 @@
             <label for="password" <?php highlight_label($errors, "password") ?> >Password</label>
           </div>
 
-          <!-- PASSWORD -->
+          <!-- PASSWORD CONFIRMATION -->
           <div class="input-field">
             <input id="confirm_password" type="password" class="validate" name="confirm_password">
-            <label for="confirm_password" <?php highlight_label($errors, "confirm_password") ?> >Confirm Password</label>
+            <label for="confirm_password"
+              <?php highlight_label($errors, "confirm_password") ?>
+              data-error="Passwords do not match!" data-success="Password Match" > Confirm Password
+            </label>
+          </div>
+
+          <div>
+            <p id="status"></p>
           </div>
 
           <!-- Submit Button -->
@@ -73,6 +80,15 @@
 
   <?php include '../includes/layout/footer.php'; ?>
   <?php include '../includes/layout/meta_body.php'; ?>
+  <script type="text/javascript" src="scripts/passwordConfirmationValidation.js"></script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#confirm_password").keyup(checkPasswordMatch);
+    });
+
+  </script>
 
 </body>
 </html>
