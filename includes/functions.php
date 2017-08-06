@@ -59,6 +59,15 @@
     } else {return null;}
   }
 
+  function gather_admins(){
+    global $db;
+    $query = "SELECT * FROM admins";
+    $query = mysqli_real_escape_string($db, $query);
+    $admin_set = mysqli_query($db, $query);
+    confirm_query($admin_set);
+    return $admin_set;
+  }
+
   function generate_header($display_content_nav=false){
     $output = '<nav>';
     $output .= '<div class="nav-wrapper orange">';

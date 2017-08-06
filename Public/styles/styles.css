@@ -93,3 +93,12 @@ a {
 .subject_overview_buttons {
   margin: 5px;
 }
+
+.card_action_link {
+  border: 0;
+  background-color: transparent;
+  color: #ffab40;
+  margin-right: 24px;
+  transition: color .3s ease;
+  text-transform: uppercase;
+}

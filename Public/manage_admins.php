@@ -13,35 +13,9 @@
   <main>
     <div class="container">
       <section class="section">
+        <h2>Manage Administrators</h2>
         <div class="row">
-          <h2>Manage Administrators</h2>
-
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">Bob Sway</span>
-                <p>Email: bsway@wcorp.com</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m4">
-            <div class="card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">Jamie Manner</span>
-                <p>Email: jmann@wcorp.com</p>
-              </div>
-              <div class="card-action">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-              </div>
-            </div>
-          </div>
-
+          <?php include '../includes/layout/admin_cards.php'; ?>
         </div>
       </section>
     </div>
@@ -63,6 +37,8 @@
     });
 
   </script>
+
+  <?php mysqli_close($db); ?>
 
 </body>
 </html>
