@@ -13,6 +13,7 @@
 
   <main>
     <div class="container">
+      <a href="manage_admins.php" class="orange-text inline_block margin-top-adder"> &#8592; Cancel </a>
       <h2>New Administrator</h2>
 
       <section>
