@@ -36,10 +36,14 @@
           <input type="submit" name="submit" value="edit" class="card_action_link">
         </form>
 
-        <form action="delete_admin.php" method="post" class="inline_block">
-          <input type="hidden" name="id" value="<?php echo $admin["id"]; ?>">
-          <input type="submit" name="submit" value="delete" class="card_action_link">
-        </form>
+        <a
+          class="waves-effect waves-light modal-trigger"
+          href="#delete_modal"
+          data-admin_id="<?php echo $admin["id"]; ?>"
+          data-username="<?php echo $admin["username"]; ?>"
+          onclick="populateModalValues(this)">
+          Remove
+        </a>
 
       </div>
 
