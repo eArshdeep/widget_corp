@@ -31,36 +31,16 @@
   <?php include '../includes/layout/footer.php'; ?>
   <?php include '../includes/layout/meta_body.php'; ?>
 
+  <script type="text/javascript" src="scripts/admin_deletion_modal.js"></script>
+
   <script type="text/javascript">
 
     $(document).ready(function () {
       <?php toast_message(); ?>
       $('.modal').modal();
-      var username;
     });
 
-    var target_menu_name = $("#value_username").text();
-
-    function populateModalValues(element){
-      // handle values from data attribute of paramater element
-      var admin_id = $(element).data("admin_id");
-      username = $(element).data("username");
-      username = username.toUpperCase();
-      // update values on modal with appropriate data
-      $(value_admin_id).val(admin_id);
-      $(value_username).text(username);
-    }
-
-
-    $("#confirm_username").on("change paste keyup", function() {
-      if( $(this).val().toLowerCase() == username.toLowerCase() ) {
-        $(".waves-red").removeClass("disabled");
-        console.log("Enabled");
-      } else {
-        $(".waves-red").addClass("disabled");
-        console.log("Disabled");
-      }
-    });
+    $("#confirm_username").on("change paste keyup", verifyDelete);
 
   </script>
 

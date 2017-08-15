@@ -8,7 +8,7 @@
 
       <p>Are you sure you want to remove the following administrator? This action cannot be undone. To continue, please enter the username shown in the text box below.</p>
 
-      <p id="value_username" class="hamburger_border bold inline_block">op</p>
+      <p id="value_username" class="hamburger_border bold inline_block"></p>
 
       <div class="input-field">
 
