@@ -48,6 +48,18 @@
     } else {return null;}
   }
 
+    function grab_admin_by_id($admin_id){
+    global $db;
+    $admin_id = mysqli_real_escape_string($db, $admin_id);
+    $query = "SELECT * FROM admins WHERE id = {$admin_id} LIMIT 1";
+    $admin = mysqli_query($db, $query);
+    confirm_query($admin);
+    if($admin = mysqli_fetch_assoc($admin)){
+      return $admin;
+    } 
+    else { return null; }
+  }
+
   function find_page_by_id($page_id){
     global $db;
     $page_id = mysqli_real_escape_string($db, $page_id);

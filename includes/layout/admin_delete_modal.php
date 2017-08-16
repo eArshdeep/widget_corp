@@ -8,15 +8,7 @@
 
       <p>Are you sure you want to remove the following administrator? This action cannot be undone. To continue, please enter the username shown in the text box below.</p>
 
-      <p id="value_username" class="hamburger_border bold inline_block"></p>
-
-      <div class="input-field">
-
-        <input placeholder="Enter username shown to confirm removal" id="confirm_username" type="text">
-
-        <label for="confirm_username">Confirm Username</label>
-
-      </div>
+      <p id="value_username" class="hamburger_border bold inline_block" style='letter-spacing:1.5px'></p>
 
     </div>
 
@@ -24,9 +16,17 @@
 
       <form action="delete_admin.php" method="post">
 
+        <div class="input-field" style='width: 90%; margin: auto;'>
+
+          <input placeholder="Enter username shown to confirm removal" id="confirm_username" type="text">
+
+          <label for="confirm_username">Confirm Username</label>
+
+        </div>
+
         <input id="value_admin_id" type="hidden" name="admin_id">
 
-        <input type="submit" value="remove" class="disabled modal-action modal-close waves-effect waves-red btn-flat">
+        <input type="submit" name='submit' value="remove" class="disabled modal-action modal-close waves-effect waves-red btn-flat">
 
       </form>
 

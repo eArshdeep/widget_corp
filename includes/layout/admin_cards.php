@@ -41,7 +41,7 @@
           href="#delete_modal"
           data-admin_id="<?php echo htmlentities($admin["id"]); ?>"
           data-username="<?php echo htmlentities($admin["username"]); ?>"
-          onclick="populateModalValues(this)">
+          onclick="initiateModal(this)">
           Remove
         </a>
 

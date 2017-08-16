@@ -30,7 +30,6 @@
 
   <?php include '../includes/layout/footer.php'; ?>
   <?php include '../includes/layout/meta_body.php'; ?>
-
   <script type="text/javascript" src="scripts/admin_deletion_modal.js"></script>
 
   <script type="text/javascript">
@@ -40,7 +39,7 @@
       $('.modal').modal();
     });
 
-    $("#confirm_username").on("change paste keyup", verifyDelete);
+    $("#confirm_username").on("change paste keyup", verifyDeleteConfirmation);
 
   </script>
 
