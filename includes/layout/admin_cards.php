@@ -32,7 +32,7 @@
       <div class="card-action">
 
         <form action="edit_admin.php" method="post" class="inline_block">
-          <input type="hidden" name="id" value="<?php echo $admin["id"]; ?>">
+          <input type="hidden" name="admin_id" value="<?php echo $admin["id"]; ?>">
           <input type="submit" name="submit" value="edit" class="card_action_link">
         </form>
 
