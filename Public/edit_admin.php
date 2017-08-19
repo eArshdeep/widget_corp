@@ -44,8 +44,8 @@ if(isset($_POST["submit"])) {
       $email = mysqli_real_escape_string($db, $email);
       $username = mysqli_real_escape_string($db, $username);
 
-      // query 
-      $query = "UPDATE admins SET first_name = '{$first_name}', last_name = '{$last_name}', email = '{$email}', username = '{$username}', WHERE id = {$id} LIMIT 1";
+      // query
+      $query = "UPDATE admins SET first_name = '{$first_name}', last_name = '{$last_name}', email = '{$email}', username = '{$username}' WHERE id = {$id} LIMIT 1";
       $result = mysqli_query($db, $query);
 
       // verify result
@@ -58,11 +58,10 @@ if(isset($_POST["submit"])) {
       redirect_to("manage_admins.php");
       }
       else {
-        $_SESSION["message"] = "Unable to process changes. Bonkers!";
-      redirect_to("manage_admins.php");
-
+				$_SESSION["message"] = "Unable to process changes. Bonkers!";
+				redirect_to("manage_admins.php");
       }
-		
+
 	} elseif ( isset($confirm_password) && $confirm_password != $admin["hashed_password"] ) {
 
 		/* Passwords do not match, abort validation and ask user for the correct password before continuing validation */
@@ -98,20 +97,20 @@ if(isset($_POST["submit"])) {
 
   	<a href="manage_admins.php" class="orange-text inline_block margin-top-adder"> &#8592; Cancel </a>
 
-  	<h2>Edit Administrator: 
+  	<h2>Edit Administrator:
 	  	<span class="light-weight">
 	  		<?php echo htmlentities($admin["username"]); ?>
 	  	</span>
   	</h2>
 
   	<form action="edit_admin.php" method="post">
-  		
+
   		<div class="row">
 
 	  		<!-- FIRST NAME -->
 	        <div class="input-field col s6">
 
-	          <input id="first_name" type="text" class="validate" name="first_name" 
+	          <input id="first_name" type="text" class="validate" name="first_name"
 	          value="<?php echo (isset($first_name)) ? htmlentities($first_name) : htmlentities($admin["first_name"]); ?>" >
 	          <label for="first_name" <?php highlight_label($errors, "first_name") ?> >First Name</label>
 
@@ -120,7 +119,7 @@ if(isset($_POST["submit"])) {
 	        <!-- LAST NAME -->
 	        <div class="input-field col s6">
 
-	          <input id="last_name" type="text" class="validate" name="last_name" 
+	          <input id="last_name" type="text" class="validate" name="last_name"
 	          value="<?php echo (isset($last_name)) ? htmlentities($last_name) : htmlentities($admin["last_name"]); ?>" >
 	          <label for="last_name" <?php highlight_label($errors, "last_name") ?> >Last Name</label>
 
@@ -131,7 +130,7 @@ if(isset($_POST["submit"])) {
 	      <!-- EMAIL -->
           <div class="input-field">
 
-            <input id="email" type="email" class="validate" name="email" 
+            <input id="email" type="email" class="validate" name="email"
             value="<?php echo (isset($email)) ? htmlentities($email) : htmlentities($admin["email"]); ?>" >
             <label for="email" <?php highlight_label($errors, "email") ?>>Email</label>
 
@@ -140,7 +139,7 @@ if(isset($_POST["submit"])) {
           <!-- USERNAME -->
           <div class="input-field">
 
-            <input id="username" type="text" class="validate" name="username" 
+            <input id="username" type="text" class="validate" name="username"
             value="<?php echo (isset($username)) ? htmlentities($username) : htmlentities($admin["username"]); ?>" >
             <label for="username" <?php highlight_label($errors, "username") ?> >Username</label>
 

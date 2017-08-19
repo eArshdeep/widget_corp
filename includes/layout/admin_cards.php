@@ -45,6 +45,11 @@
           Remove
         </a>
 
+        <form action="reset_password.php" method="post" class="inline_block">
+          <input type="hidden" name="admin_id" value="<?php echo $admin["id"]; ?>">
+          <input type="submit" name="submit" value="reset" class="card_action_link">
+        </form>
+
       </div>
 
     </div>
