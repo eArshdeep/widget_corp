@@ -39,11 +39,11 @@ if(isset($_POST["resubmit"])){
     $errors["confirm_password"] = "You need to confirm the password for this administrator to update their properties.";
   }
   // incorect password was entered
-  elseif ( $confirm_password != $admin["hashed_password"] ) {
+  elseif ( !password_check($confirm_password, $admin["hashed_password"]) ) {
     $errors["confirm_password"] = "Incorrect password was entered.";
   }
   // correct password, continue validation and query
-  elseif ( $confirm_password == $admin["hashed_password"] ) {
+  elseif ( password_check($confirm_password, $admin["hashed_password"]) ) {
 
     /* Passwords are a match... continue validation */
     $required_fields = array("first_name", "last_name", "email", "username");
