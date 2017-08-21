@@ -5,38 +5,50 @@
 
 <?php
 
-if(isset($_POST["submit"])) {
+if ( isset($_POST["submit"]) || isset($_POST["resubmit"]) ) {
 
-	/* GRAB ADMIN */
-	$admin = grab_admin_by_id($_POST["admin_id"]);
+  /* GRAB ADMIN */
+  $admin = grab_admin_by_id($_POST["admin_id"]);
 
-	/* REDIRECT if admin NOT found */
-	if(!$admin){
-		$_SESSION['message'] = "I\'m sorry, but I couldn\'t find that administrator in my records. Please try again :(";
-		redirect_to('manage_admins.php');
-	}
+  /* REDIRECT if admin NOT found */
+  if(!$admin){
+    $_SESSION['message'] = "I\'m sorry, but I couldn\'t find that administrator in my records. Please try again :(";
+    redirect_to('manage_admins.php');
+  }
+}
 
-	/* HANDLE VALUES */
-  // $id = (isset($_POST["admin_id"])) ? $_POST["admin_id"] : null;
+?>
+
+<?php
+
+if(isset($_POST["resubmit"])){
+  /* HANDLE VALUES */
   $id = $_POST["admin_id"];
-	$first_name = (isset($_POST["first_name"])) ? $_POST["first_name"] : null;
-	$last_name = (isset($_POST["last_name"])) ? $_POST["last_name"] : null;
-	$email = (isset($_POST["email"])) ? $_POST["email"] : null;
-	$username = (isset($_POST["username"])) ? $_POST["username"] : null;
-	$confirm_password = (isset($_POST["confirm_password"])) ? $_POST["confirm_password"] : null;
+  $first_name = (isset($_POST["first_name"])) ? $_POST["first_name"] : null;
+  $last_name = (isset($_POST["last_name"])) ? $_POST["last_name"] : null;
+  $email = (isset($_POST["email"])) ? $_POST["email"] : null;
+  $username = (isset($_POST["username"])) ? $_POST["username"] : null;
+  $confirm_password = (isset($_POST["confirm_password"])) ? $_POST["confirm_password"] : null;
 
-	/* Verify Password Confirmation */
-	if ( isset($confirm_password) && $confirm_password == $admin["hashed_password"] ) {
+  // no password was entered
+  if( strlen($confirm_password) == 0 ){
+    $errors["confirm_password"] = "You need to confirm the password for this administrator to update their properties.";
+  }
+  // incorect password was entered
+  elseif ( $confirm_password != $admin["hashed_password"] ) {
+    $errors["confirm_password"] = "Incorrect password was entered.";
+  }
+  // correct password, continue validation and query
+  elseif ( $confirm_password == $admin["hashed_password"] ) {
 
-		/* Passwords are a match... continue validation */
+    /* Passwords are a match... continue validation */
+    $required_fields = array("first_name", "last_name", "email", "username");
+    validate_presences($required_fields);
 
-	    $required_fields = array("first_name", "last_name", "email", "username", "confirm_password");
-	    validate_presences($required_fields);
+    $fields_with_length_limit = array("first_name" => 30, "last_name" => 30, "email" => 30, "username" => 30);
+    validate_max_lengths($fields_with_length_limit);
 
-	    $fields_with_length_limit = array("first_name" => 30, "last_name" => 30, "email" => 30, "username" => 30);
-    	validate_max_lengths($fields_with_length_limit);
-
-          if(empty($errors)){
+    if (empty($errors)) {
 
       // escape
       $first_name = mysqli_real_escape_string($db, $first_name);
@@ -48,31 +60,24 @@ if(isset($_POST["submit"])) {
       $query = "UPDATE admins SET first_name = '{$first_name}', last_name = '{$last_name}', email = '{$email}', username = '{$username}' WHERE id = {$id} LIMIT 1";
       $result = mysqli_query($db, $query);
 
-      // verify result
-      if ($result && mysqli_affected_rows($db) == 1) {
+       if ($result && mysqli_affected_rows($db) == 1) {
         $_SESSION["message"] = "Administrator was updated successfully. Cheers :)";
-      redirect_to("manage_admins.php");
+        redirect_to("manage_admins.php");
       }
+
       elseif ($result && mysqli_affected_rows($db) == 0) {
-      $_SESSION["message"] = "Nothing to change, new values same as old values -_-";
-      redirect_to("manage_admins.php");
+        $_SESSION["message"] = "Nothing to change, new values same as old values -_-";
+        redirect_to("manage_admins.php");
       }
+      
       else {
-				$_SESSION["message"] = "Unable to process changes. Bonkers!";
-				redirect_to("manage_admins.php");
+        $_SESSION["message"] = "Unable to process changes. Bonkers!";
+        redirect_to("manage_admins.php");
       }
-
-	} elseif ( isset($confirm_password) && $confirm_password != $admin["hashed_password"] ) {
-
-		/* Passwords do not match, abort validation and ask user for the correct password before continuing validation */
-
-		$errors["confirm_password"] = "The password you entered is not correct! Please enter the correct password to update administrator or reset the password on administrators dashboard.";
-
-	}
-
-
 
     }
+
+  }
 
 }
 
@@ -165,7 +170,7 @@ if(isset($_POST["submit"])) {
 
           	<input type="hidden" name="admin_id" value="<?= $admin["id"] ?>">
 
-          	<button class="btn orange waves-effect waves-light margin-top-large-adder" type="submit" name="submit">Update</button>
+          	<button class="btn orange waves-effect waves-light margin-top-large-adder" type="submit" name="resubmit">Update</button>
 
           </div>
 
