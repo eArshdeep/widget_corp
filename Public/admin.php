@@ -34,7 +34,7 @@ $first_name = $first_name["first_name"];
               </div>
               <div class="card-action">
                 <a href="#">Account Settings</a>
-                <a href="#">Log Out</a>
+                <a href="loggout.php">Log Out</a>
               </div>
             </div>
           </div>
