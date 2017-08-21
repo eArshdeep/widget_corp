@@ -1,4 +1,12 @@
+<?php require_once '../includes/session.php'; ?>
+<?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
+
+ 
+<?php 
+$first_name = find_admin_first_name($_SESSION["admin_id"]);
+$first_name = $first_name["first_name"]; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +28,7 @@
           <div class="col s12 m4">
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title">Welcome, Arshdeep</span>
+                <span class="card-title">Welcome, <?= htmlentities($first_name); ?></span>
                 <p>This is your dashboard. Here you can manage content on your website or edit permissions for other admins that you have created.</p>
               </div>
               <div class="card-action">

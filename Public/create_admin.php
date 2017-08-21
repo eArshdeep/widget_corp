@@ -65,7 +65,7 @@
     $last_name = mysqli_real_escape_string($db, $last_name);
     $email = mysqli_real_escape_string($db, $email);
     $username = mysqli_real_escape_string($db, $username);
-    $password = mysqli_real_escape_string($db, $password);
+    $password = encrypt_password($password);
 
     // QUERY
     $query = "INSERT INTO admins ( first_name, last_name, email, username, hashed_password) VALUES ( '{$first_name}', '{$last_name}', '{$email}', '{$username}', '{$password}');";

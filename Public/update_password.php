@@ -20,7 +20,7 @@ if(isset($_POST["submit"])) {
   }
 
   // escape
-  $password = mysqli_real_escape_string($db, $password);
+  $password = encrypt_password($password);
 
   // query
   $query = "UPDATE admins SET hashed_password = '{$password}' WHERE id = {$id} LIMIT 1";
