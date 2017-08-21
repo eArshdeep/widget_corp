@@ -41,7 +41,7 @@ if(isset($_POST["submit"])) {
   }
 
 } else {
-  redirect_to("reset_password.php");
+  redirect_to("admin.php");
 }
 
 ?>

@@ -2,6 +2,7 @@
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
+<?php enforce_login(); ?>
  
 <?php 
 $first_name = find_admin_first_name($_SESSION["admin_id"]);

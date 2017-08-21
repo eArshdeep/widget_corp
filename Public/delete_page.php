@@ -6,7 +6,7 @@
 
   // if no form post was submitted, redirect to homepage
   if(!isset($_POST["submit"])) {
-    redirect_to("index.php");
+    redirect_to("admin.php");
   }
 
   // get current page

@@ -209,4 +209,14 @@
     } else {return null;}
   }
 
+  function logged_in() {
+    return isset($_SESSION["admin_id"]);
+  }
+
+  function enforce_login() {
+    if(!logged_in()){
+      redirect_to("login.php");
+    }
+  }
+
 ?>

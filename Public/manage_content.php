@@ -3,6 +3,8 @@
 <?php require_once '../includes/functions.php'; ?>
 <?php include '../includes/find_current_menu.php'; ?>
 
+<?php enforce_login(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>

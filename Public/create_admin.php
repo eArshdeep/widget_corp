@@ -86,7 +86,7 @@
   } else {
 
     // NO POST, REDIRECT
-    redirect_to("new_admin.php");
+    redirect_to("admin.php");
 
   }
 

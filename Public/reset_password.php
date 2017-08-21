@@ -1,10 +1,14 @@
+<?php require_once '../includes/session.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
 <?php
 
 if(!isset($_POST["submit"]))
-  redirect_to("index.php");
+  redirect_to("admin.php");
+
 ?>
+
+<?php enforce_login(); ?>
 
 <!DOCTYPE html>
 

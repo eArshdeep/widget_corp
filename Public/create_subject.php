@@ -60,7 +60,7 @@
 
   } else {
     // if trying to access this page via a url, and not a post request, redirect to homepage
-    redirect_to("index.php");
+    redirect_to("admin.php");
   }
 ?>
 

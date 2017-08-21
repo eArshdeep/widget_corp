@@ -3,6 +3,8 @@
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/validation.php'; ?>
 
+<?php enforce_login(); ?>
+
 <?php
 
 if ( isset($_POST["submit"]) || isset($_POST["resubmit"]) ) {
@@ -15,6 +17,8 @@ if ( isset($_POST["submit"]) || isset($_POST["resubmit"]) ) {
     $_SESSION['message'] = "I\'m sorry, but I couldn\'t find that administrator in my records. Please try again :(";
     redirect_to('manage_admins.php');
   }
+} else {
+  redirect_to("admin.php");
 }
 
 ?>
