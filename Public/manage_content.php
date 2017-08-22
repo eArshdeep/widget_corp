@@ -46,8 +46,8 @@
   <?php
     // release db resources and handles
     mysqli_close($db);
-    mysqli_free_result($subject_set);
-    mysqli_free_result($page_set);
+    if(isset($subject_set)) mysqli_free_result($subject_set);
+    if(isset($page_set)) mysqli_free_result($page_set);
   ?>
 
   <!-- Import footer and meta -->

@@ -20,6 +20,10 @@
 
   <div class="divider"></div>
 
+  <?php if(mysqli_num_rows($subject_set) == 0) { ?>
+    <p style="padding:0 10px">There are currently no subjects in record.</p>
+  <?php } ?>
+
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"], $context_public = false); ?>
 
@@ -27,14 +31,14 @@
   <li>
     <!-- Subject Name -->
     <a <?php if($subject["id"]===$current_subject["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?subject=<?php echo urlencode($subject['id']); ?>" >
-      <?php echo htmlentities($subject["menu_name"]) . ": " . htmlentities($subject["position"]); ?>
+      <?php echo htmlentities($subject["menu_name"]); ?>
     </a>
     <!-- Unordered List for Subject's Pages -->
     <ul>
       <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
         <li>
           <a <?php if($page["id"]===$current_page["id"]) echo "class=\"orange lighten-4\""; ?> href="manage_content.php?page=<?php echo urlencode($page['id']); ?>">
-            <?php echo htmlentities($page["menu_name"]) . ": " . htmlentities($page["position"]); ?>
+            <?php echo htmlentities($page["menu_name"]); ?>
           </a>
         </li>
         <?php } // close page_set while loop ?>
@@ -78,6 +82,10 @@ mysqli_data_seek($subject_set, 0);
   </li>
 
   <div class="divider"></div>
+
+  <?php if(mysqli_num_rows($subject_set) == 0) { ?>
+    <p style="padding:0 10px">There are currently no subjects in record.</p>
+  <?php } ?>
 
   <?php /* Iterate through subject set */ while ($subject = mysqli_fetch_assoc($subject_set)) {?>
   <?php /* Get page set for current subject*/ $page_set = find_pages_for_subject($subject["id"]); ?>

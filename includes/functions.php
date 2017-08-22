@@ -56,7 +56,7 @@
     confirm_query($admin);
     if($admin = mysqli_fetch_assoc($admin)){
       return $admin;
-    } 
+    }
     else { return null; }
   }
 
@@ -68,7 +68,7 @@
     confirm_query($admin);
     if($admin = mysqli_fetch_assoc($admin)){
       return $admin;
-    } 
+    }
     else { return null; }
   }
 
@@ -304,8 +304,9 @@
 
   }
 
-  function adjust_position_for_page_subject_change($position, $id, $subject_id) {
-    adjust_position_for_page_addition($position, $id, $subject_id);
+  function adjust_position_for_page_subject_change($position, $id, $new_subject_id, $old_subject_id) {
+    adjust_position_for_page_addition($position, $id, $new_subject_id);
+    adjust_position_for_page_deletion($position, $old_subject_id);
   }
 
 ?>
