@@ -30,6 +30,7 @@
   if($subject_result && $subject_query_rows_affected == 1 && $page_result) {
     // query was sucessful and one record was deleted
     $_SESSION["message"] = "Subject was deleted!";
+    adjust_position_for_subject_deletion($current_subject["position"]);
     redirect_to("manage_content.php");
   } else {
     // query failed

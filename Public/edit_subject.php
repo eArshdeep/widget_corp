@@ -39,8 +39,9 @@
 			if($result && mysqli_affected_rows($db) == 1){
 				// if update is successful
 				$_SESSION["message"] = "Subject updated successfully. Cheers :)";
+				adjust_position_for_subject_change($current_subject["position"], $position, $id);
 				redirect_to("manage_content.php?subject={$id}");
-				}
+			}
 			elseif($result && mysqli_affected_rows($db) == 0){
 				// query was successful but no rows affected
 				$_SESSION["message"] = "No changes were made, values were found to be identical =)";

@@ -1,22 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 10, 2017 at 11:20 PM
--- Server version: 5.6.34-log
--- PHP Version: 7.1.5
+-- Generation Time: Aug 22, 2017 at 01:19 AM
+-- Server version: 5.6.35
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `widget_corp`
@@ -42,9 +34,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `username`, `hashed_password`) VALUES
-(3, 'Jamie', 'Manner', 'jmanner@wcorp.com', 'jmanner', 'jmpass0505'),
-(4, 'Hardeep', 'Singh', 'hsingha@wcorp.com', 'hsingh', '123ABC#45ca33'),
-(5, 'Jose', 'Maxx', 'jmaxx@wcorp.com', 'jmaxx', 'maximum1');
+(6, 'Jamie', 'Manner', 'jmanner@wcorp.com', 'jmanner', '$2y$10$Yjg4ODJhMThjODdhYWNkMup9cQg.R9CYOOpo6JGPdtP3J9diFIoFC'),
+(7, 'Jane', 'McHolly', 'pcollins@wcorp.com', 'pcollins', '$2y$10$ODdjMjg5MGJjZjgyMzRjM.SVos7KTb3sZlqVxQH2NLcUhOrbKdCy2');
 
 -- --------------------------------------------------------
 
@@ -131,7 +122,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `pages`
 --
@@ -141,8 +132,4 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;

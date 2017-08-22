@@ -48,7 +48,7 @@
     } else {return null;}
   }
 
-    function grab_admin_by_id($admin_id){
+  function grab_admin_by_id($admin_id){
     global $db;
     $admin_id = mysqli_real_escape_string($db, $admin_id);
     $query = "SELECT * FROM admins WHERE id = {$admin_id} LIMIT 1";
@@ -217,6 +217,95 @@
     if(!logged_in()){
       redirect_to("login.php");
     }
+  }
+
+  function adjust_position_for_subject_deletion($position){
+    global $db;
+    $position++;
+    $position = mysqli_real_escape_string($db, $position);
+    $query = "UPDATE subjects SET position = position - 1 WHERE position >= {$position}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_page_deletion($position, $subject_id){
+    global $db;
+    $position++;
+    $position = mysqli_real_escape_string($db, $position);
+    $subject_id = mysqli_real_escape_string($db, $subject_id);
+    $query = "UPDATE pages SET position = position - 1 WHERE position >= {$position} AND subject_id = {$subject_id}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_subject_addition($position, $id){
+    global $db;
+    $position = mysqli_real_escape_string($db, $position);
+    $id = mysqli_real_escape_string($db, $id);
+    $query = "UPDATE subjects SET position = position + 1 WHERE position >= {$position} AND id != {$id}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_page_addition($position, $id, $subject_id){
+    global $db;
+    $position = mysqli_real_escape_string($db, $position);
+    $id = mysqli_real_escape_string($db, $id);
+    $subject_id = mysqli_real_escape_string($db, $subject_id);
+    $query = "UPDATE pages SET position = position + 1 WHERE position >= {$position} AND subject_id = {$subject_id} AND id != {$id}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_subject_change($starting_position, $ending_position, $id) {
+
+    global $db;
+    $starting_position = mysqli_real_escape_string($db, $starting_position);
+    $ending_position = mysqli_real_escape_string($db, $ending_position);
+    $id = mysqli_real_escape_string($db, $id);
+
+    if ($starting_position > $ending_position) {
+      // move up
+      $query = "UPDATE subjects SET position = position + 1 WHERE position >= {$ending_position} AND position <= {$starting_position} AND id != {$id}";
+      $result = mysqli_query($db, $query);
+      confirm_query($result);
+    }
+
+    elseif ($starting_position < $ending_position) {
+      // move down
+      $query = "UPDATE subjects SET position = position - 1 WHERE position <= {$ending_position} AND position >= {$starting_position} AND id != {$id}";
+      $result = mysqli_query($db, $query);
+      confirm_query($result);
+    }
+
+  }
+
+  function adjust_position_for_page_change($starting_position, $ending_position, $id, $subject_id) {
+
+    global $db;
+    $starting_position = mysqli_real_escape_string($db, $starting_position);
+    $ending_position = mysqli_real_escape_string($db, $ending_position);
+    $id = mysqli_real_escape_string($db, $id);
+    $subject_id = mysqli_real_escape_string($db, $subject_id);
+
+    if ($starting_position > $ending_position) {
+      // move up
+      $query = "UPDATE pages SET position = position + 1 WHERE position >= {$ending_position} AND position <= {$starting_position} AND subject_id = {$subject_id} AND id != {$id}";
+      $result = mysqli_query($db, $query);
+      confirm_query($result);
+    }
+
+    elseif ($starting_position < $ending_position) {
+      // move down
+      $query = "UPDATE pages SET position = position - 1 WHERE position <= {$ending_position} AND position >= {$starting_position} AND subject_id = {$subject_id} AND id != {$id}";
+      $result = mysqli_query($db, $query);
+      confirm_query($result);
+    }
+
+  }
+
+  function adjust_position_for_page_subject_change($position, $id, $subject_id) {
+    adjust_position_for_page_addition($position, $id, $subject_id);
   }
 
 ?>

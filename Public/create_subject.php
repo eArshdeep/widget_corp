@@ -51,6 +51,8 @@
     if($result){
       // if creation is successful
       $_SESSION["message"] = "Subject created successfully. Cheers :)";
+      $inserted_row_id = mysqli_insert_id($db);
+      adjust_position_for_subject_addition($position, $inserted_row_id);
       redirect_to("manage_content.php");
     } else {
       // if creation is NOT successful

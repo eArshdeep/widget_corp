@@ -40,7 +40,7 @@
               <select name="position">
                 <option value="" disabled <?php if(!isset($_SESSION["repop_position"])){echo "selected";} ?> >Select Position</option>
                   <?php
-                  $subject_set = find_all_subjects();
+                  $subject_set = find_all_subjects(false);
                   $subject_count = mysqli_num_rows($subject_set);
                   for($count=1; $count <=$subject_count+1; $count++){
                     $output = "<option ";

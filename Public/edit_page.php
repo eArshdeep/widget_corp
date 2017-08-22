@@ -41,6 +41,11 @@
 			if($result && mysqli_affected_rows($db) == 1){
 				// if update is successful
 				$_SESSION["message"] = "Page was updated successfully. Cheers :)";
+        if( $current_page["subject_id"] == $subject_id ) {
+          adjust_position_for_page_change($current_page["position"], $position, $id, $subject_id);
+        } else {
+          adjust_position_for_page_subject_change($position, $id, $subject_id);
+        }
 				redirect_to("manage_content.php?page={$id}");
 				}
 			elseif($result && mysqli_affected_rows($db) == 0){

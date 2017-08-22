@@ -57,6 +57,8 @@
     if($result){
       // if creation is successful
       $_SESSION["message"] = "Page was added successfully. Cheers :)";
+      $inserted_row_id = mysqli_insert_id($db);
+      adjust_position_for_page_addition($position, $inserted_row_id, $subject_id);
       redirect_to("manage_content.php?subject={$subject_id}");
     } else {
       // if creation is NOT successful
