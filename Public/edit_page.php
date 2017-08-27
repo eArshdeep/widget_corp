@@ -44,7 +44,7 @@
         if( $current_page["subject_id"] == $subject_id ) {
           adjust_position_for_page_change($current_page["position"], $position, $id, $subject_id);
         } else {
-          adjust_position_for_page_subject_change($position, $id, $subject_id, $current_page["subject_id"]);
+          adjust_position_for_page_subject_change($id, $current_page["position"], $position, $current_page["subject_id"], $subject_id);
         }
 				redirect_to("manage_content.php?page={$id}");
 				}

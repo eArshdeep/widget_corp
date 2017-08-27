@@ -26,7 +26,7 @@
   if($result && mysqli_affected_rows($db) == 1) {
     // query was sucessful and one record was deleted
     $_SESSION["message"] = "Page was deleted!";
-    adjust_position_for_page_deletion($current_page["position"], $current_page["subject_id"]);
+    adjust_position_for_page_deletion($current_page["position"], $current_page["subject_id"], $current_page["id"]);
     redirect_to("manage_content.php?subject={$current_page["subject_id"]}");
   } else {
     // query failed

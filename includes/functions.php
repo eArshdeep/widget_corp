@@ -219,25 +219,6 @@
     }
   }
 
-  function adjust_position_for_subject_deletion($position){
-    global $db;
-    $position++;
-    $position = mysqli_real_escape_string($db, $position);
-    $query = "UPDATE subjects SET position = position - 1 WHERE position >= {$position}";
-    $result = mysqli_query($db, $query);
-    confirm_query($result);
-  }
-
-  function adjust_position_for_page_deletion($position, $subject_id){
-    global $db;
-    $position++;
-    $position = mysqli_real_escape_string($db, $position);
-    $subject_id = mysqli_real_escape_string($db, $subject_id);
-    $query = "UPDATE pages SET position = position - 1 WHERE position >= {$position} AND subject_id = {$subject_id}";
-    $result = mysqli_query($db, $query);
-    confirm_query($result);
-  }
-
   function adjust_position_for_subject_addition($position, $id){
     global $db;
     $position = mysqli_real_escape_string($db, $position);
@@ -266,47 +247,69 @@
 
     if ($starting_position > $ending_position) {
       // move up
-      $query = "UPDATE subjects SET position = position + 1 WHERE position >= {$ending_position} AND position <= {$starting_position} AND id != {$id}";
+      // adjust down
+      $query = "UPDATE subjects SET position = position + 1 WHERE position >= {$ending_position} AND position < {$starting_position} AND id != {$id}";
       $result = mysqli_query($db, $query);
       confirm_query($result);
     }
 
     elseif ($starting_position < $ending_position) {
       // move down
-      $query = "UPDATE subjects SET position = position - 1 WHERE position <= {$ending_position} AND position >= {$starting_position} AND id != {$id}";
+      // adjust up
+      $query = "UPDATE subjects SET position = position - 1 WHERE position <= {$ending_position} AND position > {$starting_position} AND id != {$id}";
       $result = mysqli_query($db, $query);
       confirm_query($result);
     }
 
   }
 
-  function adjust_position_for_page_change($starting_position, $ending_position, $id, $subject_id) {
+  function adjust_position_for_page_change($starting_position, $ending_position, $page_id, $subject_id) {
 
     global $db;
     $starting_position = mysqli_real_escape_string($db, $starting_position);
     $ending_position = mysqli_real_escape_string($db, $ending_position);
-    $id = mysqli_real_escape_string($db, $id);
+    $page_id = mysqli_real_escape_string($db, $page_id);
     $subject_id = mysqli_real_escape_string($db, $subject_id);
 
     if ($starting_position > $ending_position) {
-      // move up
-      $query = "UPDATE pages SET position = position + 1 WHERE position >= {$ending_position} AND position <= {$starting_position} AND subject_id = {$subject_id} AND id != {$id}";
+      // moving up
+      // adjust down
+      $query = "UPDATE pages SET position = position + 1 WHERE position >= {$ending_position} AND position < {$starting_position} AND subject_id = {$subject_id} AND id != {$page_id}";
       $result = mysqli_query($db, $query);
       confirm_query($result);
     }
 
     elseif ($starting_position < $ending_position) {
-      // move down
-      $query = "UPDATE pages SET position = position - 1 WHERE position <= {$ending_position} AND position >= {$starting_position} AND subject_id = {$subject_id} AND id != {$id}";
+      // moving down
+      // adjust up
+      $query = "UPDATE pages SET position = position - 1 WHERE position <= {$ending_position} AND position > {$starting_position} AND subject_id = {$subject_id} AND id != {$page_id}";
       $result = mysqli_query($db, $query);
       confirm_query($result);
     }
 
   }
 
-  function adjust_position_for_page_subject_change($position, $id, $new_subject_id, $old_subject_id) {
-    adjust_position_for_page_addition($position, $id, $new_subject_id);
-    adjust_position_for_page_deletion($position, $old_subject_id);
+  function adjust_position_for_subject_deletion($position){
+    global $db;
+    $position = mysqli_real_escape_string($db, $position);
+    $query = "UPDATE subjects SET position = position - 1 WHERE position > {$position}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_page_deletion($position, $subject_id, $page_id){
+    global $db;
+    $position = mysqli_real_escape_string($db, $position);
+    $subject_id = mysqli_real_escape_string($db, $subject_id);
+    $page_id = mysqli_real_escape_string($db, $page_id);
+    $query = "UPDATE pages SET position = position - 1 WHERE position > {$position} AND subject_id = {$subject_id} AND id != {$page_id}";
+    $result = mysqli_query($db, $query);
+    confirm_query($result);
+  }
+
+  function adjust_position_for_page_subject_change($id, $starting_position, $ending_position, $starting_subject, $ending_subject) {
+    adjust_position_for_page_addition($ending_position, $id, $ending_subject);
+    adjust_position_for_page_deletion($starting_position, $starting_subject, $id);
   }
 
 ?>
