@@ -2,6 +2,8 @@
 <?php require_once '../includes/functions.php'; ?>
 <?php require_once '../includes/db_connection.php'; ?>
 
+<?php enforce_login(); ?>
+
 <?php
 
 if(isset($_POST["submit"])) {

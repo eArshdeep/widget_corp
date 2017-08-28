@@ -2,6 +2,8 @@
 <?php require_once '../includes/db_connection.php'; ?>
 <?php require_once '../includes/functions.php'; ?>
 
+<?php enforce_login(); ?>
+
 <?php
 
   // if no form post was submitted, redirect to homepage

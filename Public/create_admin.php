@@ -3,6 +3,8 @@
 <?php require_once '../includes/functions.php'; ?>
 <?php require_once '../includes/validation.php'; ?>
 
+<?php enforce_login(); ?>
+
 <?php
 
   if(isset($_POST["submit"])){
