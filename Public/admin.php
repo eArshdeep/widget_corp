@@ -78,5 +78,11 @@ $first_name = $first_name["first_name"];
   $('.card-action').matchHeight({ byRow:false });
   </script>
 
+  <script>
+    $(document).ready(function () {
+      <?php toast_message(); ?>
+    });
+  </script>
+
 </body>
 </html>

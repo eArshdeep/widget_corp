@@ -4,6 +4,14 @@
 <?php require_once '../includes/validation.php'; ?>
 
 <?php
+	// redirect to dashboard if a admin is already found to be logged in
+	if(logged_in()){
+		$_SESSION["message"] = "Already logged in :)";
+		redirect_to("admin.php");
+	}
+?>
+
+<?php
 
 if( isset($_POST["submit"]) ) {
 
