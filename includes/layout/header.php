@@ -16,7 +16,7 @@
       
       <?php endif ?>
 
-      <?php if( isset($context["show_link_to_login"]) && $context["show_link_to_login"] === true): ?>
+      <?php if( isset($context["show_link_to_login"]) && $context["show_link_to_login"] === true && !logged_in() ): ?>
         
         <!-- hamburger -->
         <a href="#" data-activates="nav-mobile" class="button-collapse show-on-small">
