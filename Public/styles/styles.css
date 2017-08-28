@@ -90,7 +90,7 @@ a {
 }
 
 .desktop-nav-position {
-  height: -webkit-calc(100% - 96px);
+  height: calc(100% - 100px);
   position: relative;
   top: 68px;
 }

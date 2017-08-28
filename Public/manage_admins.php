@@ -16,11 +16,9 @@
     <div class="container">
 
       <!-- Back Button -->
-      <button class="white btn waves-effect waves-light margin-top-adder">
-        <a href="admin.php">
-          <i class="material-icons left">arrow_back</i> Dashboard
-        </a>
-      </button>
+      <a href="admin.php" class="white black-text btn waves-effect waves-light margin-top-adder">
+        <i class="material-icons left">arrow_back</i> Dashboard
+      </a>
 
       <section class="section">
         <h2>Manage Administrators</h2>

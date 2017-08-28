@@ -23,11 +23,9 @@ $first_name = $first_name["first_name"];
       <section class="section">
 
         <!-- Back Button -->
-        <button class="white btn waves-effect waves-light margin-top-adder">
-          <a href="index.php">
-            <i class="material-icons left">arrow_back</i> Homepage
-          </a>
-        </button>
+        <a href="index.php" class="white black-text btn waves-effect waves-light margin-top-adder">
+          <i class="material-icons left">arrow_back</i> Homepage
+        </a>
 
         <h2>Administrator Dashboard</h2>
 
