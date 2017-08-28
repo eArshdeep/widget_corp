@@ -10,6 +10,12 @@ if(!isset($_GET["subject"])) {
 }
 ?>
 
+<?php
+  $context = array(
+    "display_content_nav" => true
+  );
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +23,9 @@ if(!isset($_GET["subject"])) {
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
+  <?php include '../includes/layout/header.php'; ?>
+
   <?php
-    generate_header($display_content_nav=true);
     $errors = grab_errors();
     // get the subject for which we are trying to add the page
     $parent_subject = find_subject_by_id($_GET["subject"]);

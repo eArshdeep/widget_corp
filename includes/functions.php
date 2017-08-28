@@ -92,23 +92,6 @@
     return $admin_set;
   }
 
-  function generate_header($display_content_nav=false){
-    $output = '<nav>';
-    $output .= '<div class="nav-wrapper orange">';
-       $output .= '<h1 class="margin-top-zero">';
-         $output .= '<a href="index.php" class="brand-logo center">Widget Corporation</a>';
-       $output .= '</h1>';
-       if($display_content_nav===true){
-         // Mobile Navigation Hamburger
-         $output .= "<a href=\"#\" data-activates=\"content_mobile_nav\" class=\"button-collapse show-on-small\">";
-           $output .= "<i class=\"material-icons\">menu</i>";
-         $output .= "</a>";
-       }
-     $output .= '</div>';
-    $output .= '</nav>';
-    echo $output;
-  }
-
   function echo_errors($errors=array()){
     $output = null;
 

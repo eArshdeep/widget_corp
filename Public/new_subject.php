@@ -4,6 +4,12 @@
 
 <?php enforce_login(); ?>
 
+<?php
+  $context = array(
+    "display_content_nav" => true
+  );
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +18,8 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php
-    generate_header($display_content_nav=true);
-    $errors = grab_errors();
-  ?>
+  <?php include '../includes/layout/header.php'; ?>
+  <?php $errors = grab_errors(); ?>
 
   <main>
     <div class="row">

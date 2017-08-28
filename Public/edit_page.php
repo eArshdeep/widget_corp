@@ -13,6 +13,12 @@
 ?>
 
 <?php
+  $context = array(
+    "display_content_nav" => true
+  );
+?>
+
+<?php
   if(isset($_POST["submit"])){
 		// handle values
 		$id = (int) $current_page["id"];
@@ -68,7 +74,7 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header($display_content_nav=true); ?>
+  <?php include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="row">

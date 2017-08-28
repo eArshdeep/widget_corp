@@ -16,7 +16,7 @@ $first_name = $first_name["first_name"];
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header(); ?>
+  <?php include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="container">

@@ -100,7 +100,7 @@ if(isset($_POST["resubmit"])){
 
 <body>
 
-  <?php generate_header(); ?>
+  <?php include '../includes/layout/header.php'; ?>
 
   <main class="container">
 

@@ -4,6 +4,12 @@
 <?php require_once '../includes/validation.php'; ?>
 
 <?php
+  $context = array(
+    "display_content_nav" => true
+  );
+?>
+
+<?php
 	include '../includes/find_current_menu.php';
 	// return user to manage_content.php with error if subject is not found in db
 	// this can either be becuase the subject id is invalid or simply does not exist in db
@@ -62,7 +68,7 @@
   <?php include '../includes/layout/meta_head.php'; ?>
 </head>
 <body>
-  <?php generate_header($display_content_nav=true); ?>
+  <?php include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="row">

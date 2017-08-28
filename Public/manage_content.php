@@ -5,6 +5,12 @@
 
 <?php enforce_login(); ?>
 
+<?php
+  $context = array(
+    "display_content_nav" => true
+  );
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +21,7 @@
 <body>
 
   <!-- Import header and top nav -->
-  <?php generate_header($display_content_nav=true); ?>
+  <?php include '../includes/layout/header.php'; ?>
 
   <main>
     <div class="row">
