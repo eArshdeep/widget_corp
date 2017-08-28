@@ -7,7 +7,8 @@
           Widget Corporation
         </a>
       </h1>
-
+      
+      <?php /* Should we display the hamburger icon for content navigation? */ ?>
       <?php if( isset($context["display_content_nav"]) && $context["display_content_nav"] === true): ?>
 
         <!-- Content Navigation Hamburger -->
@@ -18,7 +19,8 @@
       
       <?php endif ?>
 
-      <?php if( isset($context["show_link_to_login"]) && $context["show_link_to_login"] === true && !logged_in() ): ?>
+      <?php /* Should we display a login link if you are on the homepage and not logged in */ ?>
+      <?php if( isset($context["script"]) && $context["script"] === "index" && !logged_in() ): ?>
 
         <!-- Navigation for login link on homepage -->
         
@@ -43,6 +45,7 @@
       
       <?php endif ?>
 
+      <?php /* Should we display the admin menu on the header if you are logged in? */ ?>
       <?php if ( logged_in() ) : ?>
 
         <!-- Logged in menu -->
@@ -55,8 +58,8 @@
         <!-- desktop navigation -->
         <ul class="right hide-on-med-and-down">
 
+          <?php /* Should we display a link to the admin dashboard if you are logged in and on the homepage? */ ?>
           <?php if ( isset($context["script"]) && $context["script"] == "index" ) : ?>
-            <!-- Link to dashboard on homepage -->
             <li>
               <a href="admin.php" class="side-padding-buffer">Dashboard</a>
             </li>
@@ -71,8 +74,8 @@
         <!-- mobile navigation -->
         <ul id="nav-mobile" class="side-nav">
 
+          <?php /* Should we display a link to the admin dashboard if you are logged in and on the homepage? */ ?>
           <?php if ( isset($context["script"]) && $context["script"] == "index" ) : ?>
-            <!-- Link to dashboard on homepage -->
             <li>
               <a href="admin.php" class="side-padding-buffer">Dashboard</a>
             </li>

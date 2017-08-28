@@ -4,8 +4,7 @@
 
 <?php
   $context = array(
-    "script" => "index",
-    "show_link_to_login" => true
+    "script" => "index"
   );
 ?>
 
