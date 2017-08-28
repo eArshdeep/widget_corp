@@ -51,8 +51,8 @@
         <!-- Logged in menu -->
 
         <!-- hamburger -->
-        <?php /*  Do not echo mobile nav or hamburger for admin menu if the content nav already exists. This is no deter conflicts with two navigations being displayed when logged in on pages with content navigation. */ ?>
-        
+        <?php /*  Do not echo mobile nav or hamburger for admin menu if the content nav already exists. This is to deter conflicts with two navigations being displayed when logged in on pages with content navigation. */ ?>
+
         <?php if ( !isset($context["display_content_nav"]) ): ?>
 
           <a href="#" data-activates="nav-mobile" class="button-collapse show-on-small">
@@ -78,7 +78,7 @@
         </ul>
 
         <!-- mobile navigation -->
-        <?php /*  Do not echo mobile nav or hamburger for admin menu if the content nav already exists. This is no deter conflicts with two navigations being displayed when logged in on pages with content navigation. */ ?>
+        <?php /*  Do not echo mobile nav or hamburger for admin menu if the content nav already exists. This is to deter conflicts with two navigations being displayed when logged in on pages with content navigation. */ ?>
 
         <?php if ( !isset($context["display_content_nav"]) ): ?>
           <ul id="nav-mobile" class="side-nav">
