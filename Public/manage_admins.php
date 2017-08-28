@@ -14,6 +14,14 @@
 
   <main>
     <div class="container">
+
+      <!-- Back Button -->
+      <button class="white btn waves-effect waves-light margin-top-adder">
+        <a href="admin.php">
+          <i class="material-icons left">arrow_back</i> Dashboard
+        </a>
+      </button>
+
       <section class="section">
         <h2>Manage Administrators</h2>
         <div class="row">
@@ -39,6 +47,7 @@
     $(document).ready(function () {
       <?php toast_message(); ?>
       $('.modal').modal();
+      $(".button-collapse").sideNav();
     });
 
     $("#confirm_username").on("change paste keyup", verifyDeleteConfirmation);

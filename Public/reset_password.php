@@ -73,6 +73,7 @@ if(!isset($_POST["submit"]))
 <script type="text/javascript">
 
 	$(document).ready(function () {
+    $(".button-collapse").sideNav();
 	  $("#password").keyup(advancedCheckPassword);
 	  $("#confirm_password").keyup(advancedCheckPassword);
 	});

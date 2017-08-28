@@ -3,10 +3,10 @@
 <?php require_once '../includes/functions.php'; ?>
 
 <?php enforce_login(); ?>
- 
-<?php 
+
+<?php
 $first_name = find_admin_first_name($_SESSION["admin_id"]);
-$first_name = $first_name["first_name"]; 
+$first_name = $first_name["first_name"];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,13 @@ $first_name = $first_name["first_name"];
     <div class="container">
       <section class="section">
 
+        <!-- Back Button -->
+        <button class="white btn waves-effect waves-light margin-top-adder">
+          <a href="index.php">
+            <i class="material-icons left">arrow_back</i> Homepage
+          </a>
+        </button>
+
         <h2>Administrator Dashboard</h2>
 
         <div class="row">
@@ -34,7 +41,6 @@ $first_name = $first_name["first_name"];
               </div>
               <div class="card-action">
                 <a href="#">Account Settings</a>
-                <a href="logout.php">Log Out</a>
               </div>
             </div>
           </div>
@@ -81,6 +87,7 @@ $first_name = $first_name["first_name"];
   <script>
     $(document).ready(function () {
       <?php toast_message(); ?>
+      $(".button-collapse").sideNav();
     });
   </script>
 

@@ -37,7 +37,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Nevermind</a>
     <input form="confirmation_form" name="submit" value="Delete" type="submit" class="disabled modal-action modal-close waves-effect waves-red btn-flat">
   </div>
 </div>

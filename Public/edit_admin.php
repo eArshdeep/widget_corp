@@ -73,7 +73,7 @@ if(isset($_POST["resubmit"])){
         $_SESSION["message"] = "Nothing to change, new values same as old values -_-";
         redirect_to("manage_admins.php");
       }
-      
+
       else {
         $_SESSION["message"] = "Unable to process changes. Bonkers!";
         redirect_to("manage_admins.php");
@@ -193,6 +193,7 @@ if(isset($_POST["resubmit"])){
 
   <script type="text/javascript">
   	$(document).ready(function(){
+      $(".button-collapse").sideNav();
   		<?php toast_message(); ?>
   	});
   </script>

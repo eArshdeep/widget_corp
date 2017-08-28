@@ -89,6 +89,7 @@
   <script type="text/javascript">
 
     $(document).ready(function () {
+      $(".button-collapse").sideNav();
       $("#password").keyup(checkPasswordMatch);
       $("#confirm_password").keyup(checkPasswordMatch);
       <?php toast_message(); ?>

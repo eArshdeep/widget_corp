@@ -8,7 +8,7 @@
 
       <p>Are you sure you want to remove the following administrator? This action cannot be undone. To continue, please enter the username shown in the text box below.</p>
 
-      <p id="value_username" class="hamburger_border bold inline_block" style='letter-spacing:1.5px'></p>
+      <p id="value_username" class="hamburger_border bold inline_block" style='letter-spacing:1.25px'></p>
 
     </div>
 
@@ -25,6 +25,8 @@
         </div>
 
         <input id="value_admin_id" type="hidden" name="admin_id">
+
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">Nevermind</a>
 
         <input type="submit" name='submit' value="remove" class="disabled modal-action modal-close waves-effect waves-red btn-flat">
 

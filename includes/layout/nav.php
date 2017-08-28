@@ -11,13 +11,6 @@
     </a>
   </li>
 
-  <!-- Log out -->
-  <li>
-    <a href="logout.php">
-      <i class="material-icons">exit_to_app</i> Log Out
-    </a>
-  </li>
-
   <div class="divider"></div>
 
   <?php if(mysqli_num_rows($subject_set) == 0) { ?>
