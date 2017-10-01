@@ -1,7 +1,7 @@
 <?php
   define("DB_SERVER", "localhost");
-  define("DB_USER", "widget_cms");
-  define("DB_PASS", "secretpassword");
+  define("DB_USER", "dev_ops");
+  define("DB_PASS", "apply_your_self");
   define("DB_NAME", "widget_corp");
 
   $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);

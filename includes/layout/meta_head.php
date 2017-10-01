@@ -8,4 +8,4 @@
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico" >
+<link rel="icon" type="image/png" href="favicon.png" />

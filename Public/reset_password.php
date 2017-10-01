@@ -5,7 +5,6 @@
 
 if(!isset($_POST["submit"]))
   redirect_to("admin.php");
-
 ?>
 
 <?php enforce_login(); ?>
