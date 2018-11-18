@@ -4,15 +4,15 @@
 
 ### Desktop
 
-![desktop-admins.png](desktop-admins.png)
-![desktop-content.png](desktop-content.png)
-![desktop-dashboard.png](desktop-dashboard.png)
-![desktop-edit.png](desktop-edit.png)
-![desktop-home.png](desktop-home.png)
+![desktop-admins.png](media/desktop-admins.png)
+![desktop-content.png](media/desktop-content.png)
+![desktop-dashboard.png](media/desktop-dashboard.png)
+![desktop-edit.png](media/desktop-edit.png)
+![desktop-home.png](media/desktop-home.png)
 
 ### Mobile
 
-![mobile-admins.png](mobile-admins.png)
-![mobile-content.png](mobile-content.png)
-![mobile-dashboard.png](mobile-dashboard.png)
-![mobile-home.png](mobile-home.png)
+![mobile-admins.png](media/mobile-admins.png)
+![mobile-content.png](media/mobile-content.png)
+![mobile-dashboard.png](media/mobile-dashboard.png)
+![mobile-home.png](media/mobile-home.png)
