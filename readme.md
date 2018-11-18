@@ -12,7 +12,7 @@
 
 ### Mobile
 
-![mobile-admins.png](media/mobile-admins.png)
-![mobile-content.png](media/mobile-content.png)
-![mobile-dashboard.png](media/mobile-dashboard.png)
-![mobile-home.png](media/mobile-home.png)
+<img src="media/mobile-admins.png" width="200" height="400" />
+<img src="media/mobile-content.png" width="200" height="400" />
+<img src="media/mobile-dashboard.png" width="200" height="400" />
+<img src="media/mobile-home.png" width="200" height="400" />
